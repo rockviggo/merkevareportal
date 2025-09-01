@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Min Merkevareportal</title>
+    <title>Merkevareportal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
@@ -16,7 +16,7 @@
 
     <div class="flex flex-1">
         <aside class="w-64 bg-white p-6 shadow-lg">
-            <h1 class="text-2xl font-bold mb-8 text-gray-800">Min Merkevareportal</h1>
+            <h1 class="text-2xl font-bold mb-8 text-gray-800">Merkevareportal</h1>
             <div class="mb-4 relative">
                 <input type="text" id="searchInput" placeholder="Søk i menyen..." class="w-full pl-10 pr-4 py-2 rounded-lg bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-700">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -80,8 +80,8 @@
             const sections = {
                 'startside': `
                     <div class="bg-white p-8 rounded-xl shadow-lg text-center">
-                        <img src="https://placehold.co/150x150/E5E7EB/4B5563?text=LOGO" alt="Merkevarelogo" class="mx-auto rounded-full mb-6">
-                        <h2 class="text-4xl font-extrabold text-gray-800 mb-4">Velkommen til Min Merkevareportal</h2>
+                        <img src="https://images1.cmp.optimizely.com/assets/Eika+Ved+din+side.svg/Zz03Y2E0N2Y1Mjg3NGQxMWYwOTRhOTkyYzFjMDU0ZGI0Yw==" alt="Eika logo" class="mx-auto block h-auto max-w-sm mb-10">
+                        <h2 class="text-4xl font-extrabold text-gray-800 mb-4">Merkevareportal</h2>
                         <p class="text-gray-700 leading-relaxed max-w-2xl mx-auto">
                             Denne merkevareportalen er din komplette referanse for design, merkevare og kommunikasjon. Den sikrer konsistens og høy kvalitet i alle våre digitale produkter. Bruk menyen til venstre for å utforske de ulike seksjonene.
                         </p>
@@ -529,7 +529,7 @@
                                 <div class="rounded-lg shadow-md overflow-hidden">
                                     <div class="w-full h-24 bg-[#F7F4F2]"></div>
                                     <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Grey light</p>
+                                        <p class="font-semibold text-gray-500 text-sm">Grey light</p>
                                         <p class="text-xs text-gray-500">#F7F4F2</p>
                                         <p class="text-xs text-gray-500 font-mono">var(--grey-light)</p>
                                     </div>
@@ -797,10 +797,10 @@
                         </p>
                         <div class="bg-gray-100 p-4 rounded-lg">
                             <iframe src="https://hwfuyq.collections.cmp.optimizely.com/api/library-collection/90525ad0874111f0b4b9462883aa0652?format=compact" style="top:0; left:0; bottom:0; right:0; width:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999999; min-width: 930px; min-height: 720px;"></iframe>
+                            </div>
                         </div>
-                    </div>
-                `
-            };
+                    `
+                };
 
             // Function to render content based on the section
             const renderContent = (section) => {
