@@ -167,7 +167,7 @@
                     "folder": "fc2f1082874011f0b4d3ce3c9ebf2406"
                 };
 
-                const apiUrl = 'https://cg.optimizely.com/content/v2?stored=false&cache=true&omit_empty=false';
+                const apiUrl = 'https://cg.optimizely.com/content/v2';
 
                 try {
                     const response = await fetch(apiUrl, {
@@ -175,6 +175,7 @@
                         headers: {
                             'Content-Type': 'application/json',
                             'Accept': 'application/json',
+                            // NOTE: Dette tokenet er utløpt og må erstattes med et gyldig token for å få tilgang til data
                             'Authorization': 'epi-single XcAMNFEha4uZf1EfhxCmKMWbeyEM2XfLsBMmN1MGkMuJbENR'
                         },
                         body: JSON.stringify({ query, variables })
@@ -1194,32 +1195,27 @@
                     item.classList.add('hidden');
                 });
 
-                // Then, show only the items that match the search term
+                // Then, show only the items that match the search term and their parent items
                 const navLinks = document.querySelectorAll('nav a.nav-link');
                 navLinks.forEach(link => {
                     const linkText = link.textContent.toLowerCase();
                     if (linkText.includes(searchTerm)) {
-                        const listItem = link.closest('li');
-                        listItem.classList.remove('hidden');
-                        
-                        // Also, make sure the parent group header is visible
-                        const parentUl = link.closest('ul');
-                        if (parentUl) {
-                            const parentLi = parentUl.closest('li');
-                            if (parentLi) {
-                                parentLi.classList.remove('hidden');
-                            }
+                        let currentElement = link.closest('li');
+                        while (currentElement) {
+                            currentElement.classList.remove('hidden');
+                            // Move up to the next parent li
+                            currentElement = currentElement.parentElement.closest('li');
                         }
                     }
                 });
-
+                
                 // Handle the case where the user searches for the group title itself
-                const groupHeader = document.querySelector('nav > ul > li > span');
-                if (groupHeader) {
-                    if (groupHeader.textContent.toLowerCase().includes(searchTerm)) {
-                        groupHeader.closest('li').classList.remove('hidden');
+                const groupHeaders = document.querySelectorAll('nav span');
+                groupHeaders.forEach(header => {
+                    if (header.textContent.toLowerCase().includes(searchTerm)) {
+                        header.closest('li').classList.remove('hidden');
                     }
-                }
+                });
             });
             
             // Set up click listener for the clear button
