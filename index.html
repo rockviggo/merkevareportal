@@ -10,6 +10,27 @@
         body {
             font-family: 'Open Sans', sans-serif;
         }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            max-width: 90%;
+            max-height: 90%;
+            overflow-y: auto;
+            position: relative;
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -87,6 +108,24 @@
             </main>
     </div>
 
+    <!-- Modal for å vise bilde i full størrelse -->
+    <div id="imageModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 transition-colors text-2xl font-bold">
+                &times;
+            </button>
+            <div id="modalImageContainer" class="flex flex-col lg:flex-row items-center space-y-4 lg:space-y-0 lg:space-x-8">
+                <img id="modalImage" src="" alt="Fullstørrelse bilde" class="max-w-full h-auto rounded-lg shadow-xl">
+                <div id="modalDetails" class="text-gray-700 w-full mt-4 lg:mt-0">
+                    <h3 class="text-xl font-bold mb-2">Detaljer</h3>
+                    <ul class="space-y-1 text-sm">
+                        <!-- Datafeltene vil bli lagt inn her -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // JavaScript for handling navigation and content switching
 
@@ -95,14 +134,16 @@
             const searchInput = document.getElementById('searchInput');
             const clearSearchBtn = document.getElementById('clearSearchBtn');
             const contentArea = document.getElementById('content-area');
+            const imageModal = document.getElementById('imageModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const modalImage = document.getElementById('modalImage');
+            const modalDetails = document.getElementById('modalDetails');
             
             // Funksjon for å hente data fra GraphQL
             const fetchLogos = async () => {
                 const query = `
-                    query MyQuery {
-                        PublicImageAsset(
-                            where: { ParentFolderGuid: { eq: "fc2f1082874011f0a4a816fc31a2a722" } }
-                        ) {
+                    query MyQuery($folder: String!){
+                        PublicImageAsset(where: { ParentFolderGuid: {eq:$folder} }) {
                             items {
                                 Id
                                 Title
@@ -121,18 +162,22 @@
                         }
                     }
                 `;
+                
+                const variables = {
+                    "folder": "fc2f1082874011f0b4d3ce3c9ebf2406"
+                };
+
+                const apiUrl = 'https://cg.optimizely.com/content/v2?stored=false&cache=true&omit_empty=false';
 
                 try {
-                    // Korrigert GraphQL-endepunkt og autorisasjons-header
-                    const response = await fetch('https://cg.optimizely.com/api/graphql', {
+                    const response = await fetch(apiUrl, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                             'Accept': 'application/json',
-                            // Endret til å inkludere den korrekte autentiseringstypen i headeren
-                            'Authorization': 'epi-single-token XcAMNFEha4uZf1EfhxCmKMWbeyEM2XfLsBMmN1MGkMuJbENR'
+                            'Authorization': 'epi-single XcAMNFEha4uZf1EfhxCmKMWbeyEM2XfLsBMmN1MGkMuJbENR'
                         },
-                        body: JSON.stringify({ query: query })
+                        body: JSON.stringify({ query, variables })
                     });
 
                     if (!response.ok) {
@@ -147,7 +192,45 @@
                     return null;
                 }
             };
+            
+            // Funksjon for å åpne modalen med bilde og detaljer
+            const openModal = (logo) => {
+                modalImage.src = logo.Url;
+                modalImage.alt = logo.Title || 'Bilde';
 
+                // Formatter detaljer til HTML
+                let detailsHtml = `
+                    <li class="break-words"><strong>ID:</strong> ${logo.Id}</li>
+                    <li class="break-words"><strong>Tittel:</strong> ${logo.Title || 'Ingen tittel'}</li>
+                    <li class="break-words"><strong>Alt-tekst:</strong> ${logo.AltText || 'Ikke spesifisert'}</li>
+                    <li class="break-words"><strong>Dimensjoner:</strong> ${logo.Width}x${logo.Height} px</li>
+                    <li class="break-words"><strong>URL:</strong> <a href="${logo.Url}" target="_blank" class="text-indigo-600 hover:underline break-all">${logo.Url}</a></li>
+                    <li class="break-words"><strong>Filplassering:</strong> ${logo.FileLocation || 'Ikke spesifisert'}</li>
+                    <li class="break-words"><strong>Opprettet:</strong> ${new Date(logo.DateCreated).toLocaleDateString()}</li>
+                    <li class="break-words"><strong>Endret:</strong> ${new Date(logo.DateModified).toLocaleDateString()}</li>
+                    <li class="break-words"><strong>Utløpsdato:</strong> ${logo.ExpiryDate ? new Date(logo.ExpiryDate).toLocaleDateString() : 'Ingen utløpsdato'}</li>
+                    <li class="break-words"><strong>Biblioteksti:</strong> ${logo.LibraryPath}</li>
+                    <li class="break-words"><strong>Mappe ID:</strong> ${logo.ParentFolderGuid}</li>
+                    <li class="break-words"><strong>MimeType:</strong> ${logo.MimeType}</li>
+                `;
+                modalDetails.querySelector('ul').innerHTML = detailsHtml;
+                
+                imageModal.classList.remove('hidden');
+            };
+
+            // Funksjon for å lukke modalen
+            const closeModal = () => {
+                imageModal.classList.add('hidden');
+            };
+
+            // Legg til lyttere for modalen
+            closeModalBtn.addEventListener('click', closeModal);
+            imageModal.addEventListener('click', (event) => {
+                if (event.target === imageModal) {
+                    closeModal();
+                }
+            });
+            
             // Funksjon for å rendre logobildene i et rutenett
             const renderLogos = async () => {
                 contentArea.innerHTML = `
@@ -163,15 +246,9 @@
                     let logosHtml = '';
                     logos.forEach(logo => {
                         logosHtml += `
-                            <div class="bg-white p-4 rounded-xl shadow-md flex flex-col items-center text-center">
-                                <img src="${logo.Url}" alt="${logo.Title || 'Logo'}" class="w-full h-auto rounded-lg mb-4">
+                            <div class="bg-white p-4 rounded-xl shadow-md flex flex-col items-center text-center cursor-pointer logo-thumbnail" data-logo-id="${logo.Id}">
+                                <img src="${logo.Url}" alt="${logo.Title || 'Logo'}" class="w-full h-auto max-h-48 object-contain rounded-lg mb-4">
                                 <h4 class="font-bold text-lg mb-2 text-gray-800">${logo.Title || 'Ingen tittel'}</h4>
-                                <ul class="text-sm text-gray-600 w-full text-left space-y-1">
-                                    <li><strong>ID:</strong> ${logo.Id}</li>
-                                    <li><strong>URL:</strong> <a href="${logo.Url}" target="_blank" class="text-indigo-600 hover:underline break-all">${logo.Url}</a></li>
-                                    <li><strong>Dimensjoner:</strong> ${logo.Width}x${logo.Height} px</li>
-                                    <li><strong>Filtype:</strong> ${logo.MimeType}</li>
-                                </ul>
                             </div>
                         `;
                     });
@@ -180,11 +257,23 @@
                         <div class="bg-white p-8 rounded-xl shadow-lg">
                             <h2 class="text-3xl font-bold text-gray-800 mb-6">Logoer</h2>
                             <p class="text-gray-700 leading-relaxed mb-8">Her kan du laste ned de offisielle logoene og se all tilhørende informasjon.</p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                            <div id="logoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                                 ${logosHtml}
                             </div>
                         </div>
                     `;
+                    
+                    // Legg til lyttere for hver thumbnail etter at de er rendret
+                    const logoThumbnails = document.querySelectorAll('.logo-thumbnail');
+                    logoThumbnails.forEach(thumbnail => {
+                        thumbnail.addEventListener('click', () => {
+                            const logoId = thumbnail.getAttribute('data-logo-id');
+                            const clickedLogo = logos.find(l => l.Id === logoId);
+                            if (clickedLogo) {
+                                openModal(clickedLogo);
+                            }
+                        });
+                    });
                 } else {
                     contentArea.innerHTML = `
                         <div class="bg-white p-8 rounded-xl shadow-lg text-center">
@@ -193,6 +282,62 @@
                         </div>
                     `;
                 }
+            };
+
+            // Funksjon for å generere en slogan ved hjelp av Gemini API
+            const generateSlogan = async (prompt) => {
+                const apiKey = ""; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                
+                const systemPrompt = "Du er en profesjonell tekstforfatter og markedsfører. Skriv en kreativ og inspirerende merkevareslogan på norsk. Sloganen skal være kort, lett å huske og ha en positiv tone. Du skal kun svare med selve sloganen.";
+                
+                const payload = {
+                    contents: [{ parts: [{ text: `Generer en slogan basert på følgende nøkkelord: ${prompt}` }] }],
+                    systemInstruction: {
+                        parts: [{ text: systemPrompt }]
+                    },
+                };
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    return result.candidates?.[0]?.content?.parts?.[0]?.text || 'Klarte ikke å generere en slogan.';
+                } catch (error) {
+                    console.error('Feil ved generering av slogan:', error);
+                    return 'Det oppstod en feil under generering. Vennligst prøv igjen.';
+                }
+            };
+            
+            // Funksjon for å sette opp slogan-generatoren
+            const setupSloganGenerator = () => {
+                const sloganContainer = document.getElementById('sloganGenerator');
+                if (!sloganContainer) return;
+                
+                const input = sloganContainer.querySelector('input');
+                const button = sloganContainer.querySelector('button');
+                const resultArea = sloganContainer.querySelector('#sloganResult');
+                
+                button.addEventListener('click', async () => {
+                    const prompt = input.value.trim();
+                    if (prompt.length === 0) {
+                        resultArea.textContent = 'Vennligst skriv inn noen nøkkelord.';
+                        return;
+                    }
+                    
+                    button.disabled = true;
+                    button.textContent = 'Genererer...';
+                    resultArea.textContent = 'Lager en magisk slogan for deg...';
+                    
+                    const slogan = await generateSlogan(prompt);
+                    
+                    resultArea.textContent = slogan;
+                    button.textContent = '✨ Generer slogan';
+                    button.disabled = false;
+                });
             };
 
             const sections = {
@@ -957,11 +1102,26 @@
                                 <iframe src="https://hwfuyq.collections.cmp.optimizely.com/api/library-collection/54c8372483f811f0a4a816fc31a2a722?format=compact" style="top:0; left:0; bottom:0; right:0; width:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999999; min-width: 930px; min-height: 1250px;"></iframe>
                             </div>
                         </div>
+                        <div class="mt-8" id="sloganGenerator">
+                            <h3 class="text-2xl font-semibold text-gray-700 mb-2">Skap en slogan med ✨Gemini</h3>
+                            <p class="text-gray-600 leading-relaxed mb-4">
+                                Skriv inn noen nøkkelord eller et tema, og la AI generere en kreativ slogan for deg.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                                <input type="text" id="sloganInput" placeholder="F.eks. 'trygg, fremtidsrettet, personlig'" class="flex-1 py-2 px-4 rounded-lg bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-700">
+                                <button id="sloganBtn" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-200">
+                                    ✨ Generer slogan
+                                </button>
+                            </div>
+                            <div id="sloganResult" class="text-gray-800 font-semibold p-4 rounded-lg bg-gray-50 border border-gray-200">
+                                Sloganen din vil vises her...
+                            </div>
+                        </div>
                     </div>
                 `,
                 'grong_sparebank': `
                     <div class="bg-white p-8 rounded-xl shadow-lg">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-6">For banker</h2>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Grong Sparebank</h2>
                         <p class="text-gray-700 leading-relaxed mb-4">
                             Her finner du ressurser og retningslinjer for banker som benytter Eika-merkevaren, inkludert bruk av logoer.
                         </p>
@@ -998,6 +1158,11 @@
                 // If the section is 'logoer', fetch and render the content
                 if (section === 'logoer') {
                     renderLogos();
+                }
+
+                // If the section is 'vår_merkevare', set up the slogan generator
+                if (section === 'vår_merkevare') {
+                    setupSloganGenerator();
                 }
             };
 
