@@ -175,7 +175,6 @@
                         headers: {
                             'Content-Type': 'application/json',
                             'Accept': 'application/json',
-                            // NOTE: Dette tokenet er utløpt og må erstattes med et gyldig token for å få tilgang til data
                             'Authorization': 'epi-single XcAMNFEha4uZf1EfhxCmKMWbeyEM2XfLsBMmN1MGkMuJbENR'
                         },
                         body: JSON.stringify({ query, variables })
@@ -246,10 +245,23 @@
                 if (logos && logos.length > 0) {
                     let logosHtml = '';
                     logos.forEach(logo => {
+                        const isExpired = logo.ExpiryDate && new Date(logo.ExpiryDate) < new Date();
+                        const expiredIconHtml = isExpired ? `
+                            <span class="ml-2 relative group cursor-help">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="absolute left-1/2 -translate-x-1/2 -top-full mt-2 px-2 py-1 bg-black text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">Utløpt</span>
+                            </span>
+                        ` : '';
+                        
                         logosHtml += `
                             <div class="bg-white p-4 rounded-xl shadow-md flex flex-col items-center text-center cursor-pointer logo-thumbnail" data-logo-id="${logo.Id}">
                                 <img src="${logo.Url}" alt="${logo.Title || 'Logo'}" class="w-full h-auto max-h-48 object-contain rounded-lg mb-4">
-                                <h4 class="font-bold text-lg mb-2 text-gray-800">${logo.Title || 'Ingen tittel'}</h4>
+                                <h4 class="font-bold text-lg mb-2 text-gray-800 flex items-center">
+                                    ${logo.Title || 'Ingen tittel'}
+                                    ${expiredIconHtml}
+                                </h4>
                             </div>
                         `;
                     });
