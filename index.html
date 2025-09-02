@@ -31,6 +31,30 @@
             overflow-y: auto;
             position: relative;
         }
+
+        /* Skjul standard pil for details-taggen */
+        details > summary::-webkit-details-marker,
+        details > summary::marker {
+            display: none;
+        }
+        
+        /* Legg til og stil den egendefinerte pilen */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::after {
+            content: '';
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            transition: transform 0.2s ease-in-out;
+        }
+        details[open] > summary::after {
+            transform: rotate(-180deg);
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -51,54 +75,62 @@
             </div>
             <nav>
                 <ul>
-                    <li>
-                        <a href="#startside" data-section="startside" class="nav-link block px-4 py-2 mb-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
+                    <li class="mb-2">
+                        <a href="#startside" data-section="startside" class="nav-link block px-4 py-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
                             Startside
                         </a>
                     </li>
-                    <li>
-                        <a href="#prinsipper" data-section="prinsipper" class="nav-link block px-4 py-2 mb-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
+                    <li class="mb-2">
+                        <a href="#prinsipper" data-section="prinsipper" class="nav-link block px-4 py-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
                             Designprinsipper
                         </a>
                     </li>
-                    <li>
-                        <a href="#farger" data-section="farger" class="nav-link block px-4 py-2 mb-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
+                    <li class="mb-2">
+                        <a href="#farger" data-section="farger" class="nav-link block px-4 py-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
                             Farger
                         </a>
                     </li>
-                    <li>
-                        <a href="#typografi" data-section="typografi" class="nav-link block px-4 py-2 mb-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
+                    <li class="mb-2">
+                        <a href="#typografi" data-section="typografi" class="nav-link block px-4 py-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
                             Typografi
                         </a>
                     </li>
-                    <li>
-                        <span class="block px-4 py-2 mb-1 text-gray-800 font-semibold">
-                            Kommunikasjon & Merkevare
-                        </span>
-                        <ul class="ml-4 border-l-2 border-gray-200">
-                            <li>
-                                <a href="#vår_merkevare" data-section="vår_merkevare" class="nav-link block px-4 py-2 mb-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
-                                    Vår merkevare
-                                </a>
-                            </li>
-                            <li>
-                                <span class="block px-4 py-2 mb-1 text-gray-800 font-semibold">
-                                    For banker
-                                </span>
-                                <ul class="ml-4 border-l-2 border-gray-200">
-                                    <li>
-                                        <a href="#grong_sparebank" data-section="grong_sparebank" class="nav-link block px-4 py-2 mb-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
-                                            Grong Sparebank
+                    <li class="mb-2 menu-item-collapsible">
+                        <details class="collapsable-container__wrapper">
+                            <summary class="collapsable-container__summary flex justify-between items-center px-4 py-2 rounded-lg text-gray-800 font-semibold cursor-pointer hover:bg-gray-100 transition duration-200">
+                                <span class="collapsable-container__summary-title">Kommunikasjon & Merkevare</span>
+                            </summary>
+                            <div class="collapsable-container-content__wrapper">
+                                <ul class="ml-4 border-l-2 border-gray-200 mt-2">
+                                    <li class="mb-2">
+                                        <a href="#vår_merkevare" data-section="vår_merkevare" class="nav-link block px-4 py-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
+                                            Vår merkevare
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#logoer" data-section="logoer" class="nav-link block px-4 py-2 mb-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
-                                            Logoer
-                                        </a>
+                                    <li class="mb-2 menu-item-collapsible">
+                                        <details class="collapsable-container__wrapper">
+                                            <summary class="collapsable-container__summary flex justify-between items-center px-4 py-2 rounded-lg text-gray-800 font-semibold cursor-pointer hover:bg-gray-100 transition duration-200">
+                                                <span class="collapsable-container__summary-title">For banker</span>
+                                            </summary>
+                                            <div class="collapsable-container-content__wrapper">
+                                                <ul class="ml-4 border-l-2 border-gray-200 mt-2">
+                                                    <li>
+                                                        <a href="#grong_sparebank" data-section="grong_sparebank" class="nav-link block px-4 py-2 mb-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
+                                                            Grong Sparebank
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#logoer" data-section="logoer" class="nav-link block px-4 py-2 mb-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
+                                                            Logoer
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </details>
                                     </li>
                                 </ul>
-                            </li>
-                        </ul>
+                            </div>
+                        </details>
                     </li>
                 </ul>
             </nav>
@@ -172,15 +204,16 @@
                     "folder": "fc2f1082874011f0b4d3ce3c9ebf2406"
                 };
 
+                // Vennligst erstatt denne URL-en med din faktiske GraphQL-endepunkt
                 const apiUrl = 'https://cg.optimizely.com/content/v2';
+                const token = 'XcAMNFEha4uZf1EfhxCmKMWbeyEM2XfLsBMmN1MGkMuJbENR';
 
                 try {
-                    const response = await fetch(apiUrl, {
+                    const response = await fetch(`${apiUrl}?auth=${token}`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Accept': 'application/json',
-                            'Authorization': 'epi-single XcAMNFEha4uZf1EfhxCmKMWbeyEM2XfLsBMmN1MGkMuJbENR'
+                            'Accept': 'application/json'
                         },
                         body: JSON.stringify({ query, variables })
                     });
@@ -236,7 +269,7 @@
                 }
             });
             
-            // Funksjon for å rendre logobildene i et rutenett
+            // Funksjon for å rendere logobildene i et rutenett
             const renderLogos = async () => {
                 contentArea.innerHTML = `
                     <div class="bg-white p-8 rounded-xl shadow-lg">
@@ -730,8 +763,8 @@
                                     <div class="p-3 bg-gray-50">
                                         <p class="font-semibold text-gray-800 text-sm">Blue light</p>
                                         <p class="text-xs text-gray-500">#EFF9FD</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:8, M:1, Y:0, K:1</p>
                                         <p class="text-xs text-gray-500 font-mono">var(--blue-light)</p>
+                                        <p class="text-xs text-gray-500">CMYK: C:8, M:1, Y:0, K:1</p>
                                     </div>
                                 </div>
                                 <div class="rounded-lg shadow-md overflow-hidden">
@@ -1198,7 +1231,7 @@
             // Set up search functionality
             searchInput.addEventListener('input', (event) => {
                 const searchTerm = event.target.value.toLowerCase();
-                const allListItems = document.querySelectorAll('nav li');
+                const allNavLinks = document.querySelectorAll('nav a.nav-link');
                 
                 // Show or hide the clear button
                 if (searchTerm.length > 0) {
@@ -1207,32 +1240,53 @@
                     clearSearchBtn.classList.add('hidden');
                 }
 
-                // First, hide all menu items
-                allListItems.forEach(item => {
-                    item.classList.add('hidden');
-                });
+                // Først, skjul alle menyelementer og lukk alle detaljer
+                document.querySelectorAll('nav li').forEach(li => li.classList.add('hidden'));
+                document.querySelectorAll('nav details').forEach(details => details.open = false);
 
-                // Then, show only the items that match the search term and their parent items
-                const navLinks = document.querySelectorAll('nav a.nav-link');
-                navLinks.forEach(link => {
-                    const linkText = link.textContent.toLowerCase();
-                    if (linkText.includes(searchTerm)) {
-                        let currentElement = link.closest('li');
-                        while (currentElement) {
-                            currentElement.classList.remove('hidden');
-                            // Move up to the next parent li
-                            currentElement = currentElement.parentElement.closest('li');
+                if (searchTerm.length > 0) {
+                    allNavLinks.forEach(link => {
+                        const linkText = link.textContent.toLowerCase();
+                        if (linkText.includes(searchTerm)) {
+                            // Vis lenken og alle overliggende elementer
+                            let currentElement = link.closest('li');
+                            while (currentElement) {
+                                currentElement.classList.remove('hidden');
+                                const parentDetails = currentElement.closest('details');
+                                if (parentDetails) {
+                                    parentDetails.open = true;
+                                    currentElement = parentDetails.closest('li');
+                                } else {
+                                    currentElement = null;
+                                }
+                            }
                         }
-                    }
-                });
-                
-                // Handle the case where the user searches for the group title itself
-                const groupHeaders = document.querySelectorAll('nav span');
-                groupHeaders.forEach(header => {
-                    if (header.textContent.toLowerCase().includes(searchTerm)) {
-                        header.closest('li').classList.remove('hidden');
-                    }
-                });
+                    });
+
+                    // Vis gruppeoverskrifter som matcher søket
+                    const groupHeaders = document.querySelectorAll('nav summary span.collapsable-container__summary-title');
+                    groupHeaders.forEach(header => {
+                        const headerText = header.textContent.toLowerCase();
+                        if (headerText.includes(searchTerm)) {
+                            let currentElement = header.closest('li');
+                            while (currentElement) {
+                                currentElement.classList.remove('hidden');
+                                const parentDetails = currentElement.closest('details');
+                                if (parentDetails) {
+                                    parentDetails.open = true;
+                                    currentElement = parentDetails.closest('li');
+                                } else {
+                                    currentElement = null;
+                                }
+                            }
+                        }
+                    });
+
+                } else {
+                    clearSearchBtn.classList.add('hidden');
+                    // Vis alle meny-elementer når søkefeltet er tomt
+                    document.querySelectorAll('nav li').forEach(li => li.classList.remove('hidden'));
+                }
             });
             
             // Set up click listener for the clear button
