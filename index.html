@@ -120,8 +120,18 @@
                                                         </a>
                                                     </li>
                                                     <li>
+                                                        <a href="#narvik_sparebank" data-section="narvik_sparebank" class="nav-link block px-4 py-2 mb-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
+                                                            Narvik Sparebank
+                                                        </a>
+                                                    </li>
+                                                    <li>
                                                         <a href="#logoer" data-section="logoer" class="nav-link block px-4 py-2 mb-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
-                                                            Logoer
+                                                            Logoer (Grong)
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#logoer_narvik" data-section="logoer_narvik" class="nav-link block px-4 py-2 mb-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
+                                                            Logoer (Narvik)
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -135,7 +145,7 @@
                 </ul>
             </nav>
             <div class="mt-8">
-                <a href="https://cmp.optimizely.com/cloud/work-request/request-form?template=3a6a227f898c47f4abc11751017d76a1&view=grid" target="_blank" class="block w-full py-2 px-4 text-center rounded-lg bg-[#90D000] text-black font-bold hover:bg-[#80B800] transition duration-200 shadow-md">
+                <a href="https://cmp.optimizely.com/cloud/work-request/request-form?template=3a6a227f898c47f4abc11751017d76a1&view=grid" target="_blank" class="block w-full py-2 px-4 text-center rounded-lg bg-[#90D000] text-black font-normal hover:bg-[#80B800] transition duration-200 shadow-md">
                     Bestilling
                 </a>
             </div>
@@ -177,7 +187,7 @@
             const modalDetails = document.getElementById('modalDetails');
             
             // Funksjon for å hente data fra GraphQL
-            const fetchLogos = async () => {
+            const fetchLogos = async (folderId) => {
                 const query = `
                     query MyQuery($folder: String!){
                         PublicImageAsset(where: { ParentFolderGuid: {eq:$folder} }) {
@@ -201,12 +211,12 @@
                 `;
                 
                 const variables = {
-                    "folder": "fc2f1082874011f0b4d3ce3c9ebf2406"
+                    "folder": folderId
                 };
 
                 // Vennligst erstatt denne URL-en med din faktiske GraphQL-endepunkt
                 const apiUrl = 'https://cg.optimizely.com/content/v2';
-                const token = 'XcAMNFEha4uZf1EfhxCmKMWbeyEM2XfLsBMmN1MGkMuJbENR';
+                const token = 'a2bc6573f32769af0686d16886e3e771';
 
                 try {
                     const response = await fetch(`${apiUrl}?auth=${token}`, {
@@ -270,15 +280,15 @@
             });
             
             // Funksjon for å rendere logobildene i et rutenett
-            const renderLogos = async () => {
+            const renderLogos = async (folderId, pageTitle) => {
                 contentArea.innerHTML = `
                     <div class="bg-white p-8 rounded-xl shadow-lg">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Logoer</h2>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-6">${pageTitle}</h2>
                         <p class="text-gray-700 leading-relaxed mb-8">Henter logoer...</p>
                     </div>
                 `;
 
-                const logos = await fetchLogos();
+                const logos = await fetchLogos(folderId);
                 
                 if (logos && logos.length > 0) {
                     let logosHtml = '';
@@ -306,7 +316,7 @@
 
                     contentArea.innerHTML = `
                         <div class="bg-white p-8 rounded-xl shadow-lg">
-                            <h2 class="text-3xl font-bold text-gray-800 mb-6">Logoer</h2>
+                            <h2 class="text-3xl font-bold text-gray-800 mb-6">${pageTitle}</h2>
                             <p class="text-gray-700 leading-relaxed mb-8">Her kan du laste ned de offisielle logoene og se all tilhørende informasjon.</p>
                             <div id="logoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                                 ${logosHtml}
@@ -328,7 +338,7 @@
                 } else {
                     contentArea.innerHTML = `
                         <div class="bg-white p-8 rounded-xl shadow-lg text-center">
-                            <h2 class="text-3xl font-bold text-gray-800 mb-4">Logoer</h2>
+                            <h2 class="text-3xl font-bold text-gray-800 mb-4">${pageTitle}</h2>
                             <p class="text-gray-600">Kunne ikke laste inn logoer. Sjekk at GraphQL-endepunktet er korrekt og at det returnerer data.</p>
                         </div>
                     `;
@@ -1207,10 +1217,48 @@
                                             </div>
                                         </div>
                                     `;
+                            case 'narvik_sparebank':
+                                return `
+                                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Narvik Sparebank</h2>
+                                        <p class="text-gray-700 leading-relaxed font-bold mb-4">
+                                            Narvik Sparebank kommuniserer om økonomi på en jordnær og trygg måte, rettet mot "vanlige folk." De unngår kompliserte faguttrykk og fokuserer på tre hovedprinsipper: forenkling, konkrete eksempler og lokal tilknytning.
+                                        </p>
+                                        <div>
+                                            <h3 class="text-2xl font-semibold text-gray-700 mb-2">Enkel og tilgjengelig kommunikasjon</h3>
+                                            <p class="text-gray-600 leading-relaxed mb-4">
+                                                Banken gjør økonomi mindre skremmende ved å bruke et enkelt språk. De beroliger kundene med utsagn som "Sunn økonomi handler ikke om å være et tallgeni, men om å ta små og smarte grep," og forsikrer at "det finnes ingen dumme spørsmål." De bryter ned store temaer til overkommelige handlinger, som å starte sparing med bare 100 kroner, og gjør dermed økonomisk kontroll oppnåelig for alle.
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-2xl font-semibold text-gray-700 mb-2">Praktiske og handlingsrettede råd</h3>
+                                            <p class="text-gray-600 leading-relaxed mb-4">
+                                                Narvik Sparebank gir konkrete tips som kundene kan bruke i hverdagen. Eksempler inkluderer enkle metoder for å håndtere privatøkonomien, som å sette opp budsjett og bruke flere kontoer. De tar også opp viktige temaer som svindel på en forståelig måte, med gjenkjennelige eksempler fra hverdagen og klare råd som "Stopp opp og tenk" og "Aldri del BankID-passordet!"
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-2xl font-semibold text-gray-700 mb-2">Lokal og personlig service</h3>
+                                            <p class="text-gray-600 leading-relaxed mb-4">
+                                                Banken understreker sin sterke lokale forankring og posisjonerer seg som en del av lokalsamfunnet. De kombinerer digitale løsninger med personlig rådgivning, og lover at de er lett tilgjengelige for kundene. Narvik Sparebank fremstiller seg ikke som en fjern institusjon, men som en pålitelig partner som er der for å hjelpe kundene å navigere i sin økonomi. Deres overordnede budskap er at de er en støttespiller, med en holdning som sier: "du kan få til dette," og "vi er her for å hjelpe deg."
+                                            </p>
+                                        </div>
+                                        <div class="bg-gray-100 p-4 rounded-lg">
+                                            <iframe src="https://hwfuyq.collections.cmp.optimizely.com/api/library-collection/PLACEHOLDER_FOR_NARVIK_BANK_COLLECTION_ID?format=compact" style="top:0; left:0; bottom:0; right:0; width:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999999; min-width: 930px; min-height: 1250px;"></iframe>
+                                            </div>
+                                        </div>
+                                    `;
                             case 'logoer':
                                 return `
                                     <div class="bg-white p-8 rounded-xl shadow-lg">
-                                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Logoer</h2>
+                                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Logoer (Grong)</h2>
+                                        <p class="text-gray-700 leading-relaxed mb-8">Her kan du laste ned de offisielle logoene og se all tilhørende informasjon.</p>
+                                        <p>Henter data...</p>
+                                    </div>
+                                `;
+                            case 'logoer_narvik':
+                                return `
+                                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Logoer (Narvik)</h2>
                                         <p class="text-gray-700 leading-relaxed mb-8">Her kan du laste ned de offisielle logoene og se all tilhørende informasjon.</p>
                                         <p>Henter data...</p>
                                     </div>
@@ -1238,7 +1286,12 @@
                 
                 // If the section is 'logoer', fetch and render the content
                 if (section === 'logoer') {
-                    renderLogos();
+                    renderLogos('fc2f1082874011f0b4d3ce3c9ebf2406', 'Logoer (Grong)');
+                }
+                
+                // If the section is 'logoer_narvik', fetch and render the content
+                if (section === 'logoer_narvik') {
+                    renderLogos('PLACEHOLDER_FOR_NARVIK_LOGO_FOLDER_ID', 'Logoer (Narvik)');
                 }
 
                 // If the section is 'eika_merkevare', set up the slogan generator
