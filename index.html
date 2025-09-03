@@ -103,8 +103,8 @@
                             <div class="collapsable-container-content__wrapper">
                                 <ul class="ml-4 border-l-2 border-gray-200 mt-2">
                                     <li class="mb-2">
-                                        <a href="#vår_merkevare" data-section="vår_merkevare" class="nav-link block px-4 py-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
-                                            Vår merkevare
+                                        <a href="#eika_merkevare" data-section="eika_merkevare" class="nav-link block px-4 py-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
+                                            Eika merkevare
                                         </a>
                                     </li>
                                     <li class="mb-2 menu-item-collapsible">
@@ -391,804 +391,816 @@
                 });
             };
 
-            const sections = {
-                'startside': `
-                    <div class="bg-white p-8 rounded-xl shadow-lg text-center">
-                        <img src="https://images1.cmp.optimizely.com/assets/Eika+Ved+din+side.svg/Zz03Y2E0N2Y1Mjg3NGQxMWYwOTRhOTkyYzFjMDU0ZGI0Yw==" alt="Eika logo" class="mx-auto block h-auto max-w-sm mb-10">
-                        <h2 class="text-4xl font-extrabold text-gray-800 mb-4">Merkevareportal</h2>
-                        <p class="text-gray-700 leading-relaxed max-w-2xl mx-auto">
-                            Denne merkevareportalen er din komplette referanse for design, merkevare og kommunikasjon. Den sikrer konsistens og høy kvalitet i alle våre digitale produkter. Bruk menyen til venstre for å utforske de ulike seksjonene.
-                        </p>
-                    </div>
-                `,
-                'prinsipper': `
-                    <div class="bg-white p-8 rounded-xl shadow-lg">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Designprinsipper</h2>
-                        <p class="text-gray-700 leading-relaxed mb-4">
-                            Våre designprinsipper er grunnlaget for alt vi skaper. De veileder oss i å bygge intuitive, konsistente og brukervennlige løsninger.
-                        </p>
-                        <div class="space-y-6 mt-6">
-                            <div>
-                                <h3 class="text-2xl font-semibold text-gray-700 mb-2">En ting om gangen</h3>
-                                <p class="text-gray-600 leading-relaxed">
-                                    Antall valg og kompleksitet i valgene kan påvirke hvor lang tid det tar å ta en beslutning. Vi forenkler ved å dele opp kundereisen i mindre biter. Vi setter ned farten for å skape trygghet og øke tillit. Vi skreller bort kompleksitet.
+            // Funksjon for å hente innhold for en gitt seksjon
+            const getContent = (section) => {
+                switch (section) {
+                    case 'startside':
+                        return `
+                            <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                                <img src="https://images1.cmp.optimizely.com/assets/Eika+Ved+din+side.svg/Zz03Y2E0N2Y1Mjg3NGQxMWYwOTRhOTkyYzFjMDU0ZGI0Yw==" alt="Eika logo" class="mx-auto block h-auto max-w-sm mb-10">
+                                <h2 class="text-4xl font-extrabold text-gray-800 mb-4">Merkevareportal</h2>
+                                <p class="text-gray-700 leading-relaxed max-w-2xl mx-auto">
+                                    Denne merkevareportalen er din komplette referanse for design, merkevare og kommunikasjon. Den sikrer konsistens og høy kvalitet i alle våre digitale produkter. Bruk menyen til venstre for å utforske de ulike seksjonene.
                                 </p>
                             </div>
-                            <div>
-                                <h3 class="text-2xl font-semibold text-gray-700 mb-2">I gode hender</h3>
-                                <p class="text-gray-600 leading-relaxed">
-                                    Vi bruker en folkelig, varm og personlig tone. Vi ivaretar kunden med vennlig rådgiving tilpasset kundens behov og mål. Vi gir kunden nyttige tilbakemeldinger underveis i kundereisen.
+                        `;
+                    case 'prinsipper':
+                        return `
+                            <div class="bg-white p-8 rounded-xl shadow-lg">
+                                <h2 class="text-3xl font-bold text-gray-800 mb-6">Designprinsipper</h2>
+                                <p class="text-gray-700 leading-relaxed mb-4">
+                                    Våre designprinsipper er grunnlaget for alt vi skaper. De veileder oss i å bygge intuitive, konsistente og brukervennlige løsninger.
                                 </p>
+                                <div class="space-y-6 mt-6">
+                                    <div>
+                                        <h3 class="text-2xl font-semibold text-gray-700 mb-2">En ting om gangen</h3>
+                                        <p class="text-gray-600 leading-relaxed">
+                                            Antall valg og kompleksitet i valgene kan påvirke hvor lang tid det tar å ta en beslutning. Vi forenkler ved å dele opp kundereisen i mindre biter. Vi setter ned farten for å skape trygghet og øke tillit. Vi skreller bort kompleksitet.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-semibold text-gray-700 mb-2">I gode hender</h3>
+                                        <p class="text-gray-600 leading-relaxed">
+                                            Vi bruker en folkelig, varm og personlig tone. Vi ivaretar kunden med vennlig rådgiving tilpasset kundens behov og mål. Vi gir kunden nyttige tilbakemeldinger underveis i kundereisen.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-semibold text-gray-700 mb-2">Klar & inkluderende</h3>
+                                        <p class="text-gray-600 leading-relaxed">
+                                            Vi tar hensyn til ulike brukergrupper og tilrettelegger for deres behov. Vi følger vanlige designmønstre for å gjøre tjenestene intuitive. Vi bruker enkelt og forståelig språk i stedet for kompliserte faguttrykk.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-semibold text-gray-700 mb-2">Artig & inspirerende</h3>
+                                        <p class="text-gray-600 leading-relaxed">
+                                            Vi gjør økonomi morsomt og inspirerende for kundene slik at de kan ta gode valg. Vi legger vekt på at de første og siste stegene i kundereisen skal være positive for kunden. Vi beriker kundereisen.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="text-2xl font-semibold text-gray-700 mb-2">Klar & inkluderende</h3>
-                                <p class="text-gray-600 leading-relaxed">
-                                    Vi tar hensyn til ulike brukergrupper og tilrettelegger for deres behov. Vi følger vanlige designmønstre for å gjøre tjenestene intuitive. Vi bruker enkelt og forståelig språk i stedet for kompliserte faguttrykk.
+                        `;
+                    case 'farger':
+                        return `
+                            <div class="bg-white p-8 rounded-xl shadow-lg">
+                                <h2 class="text-3xl font-bold text-gray-800 mb-6">Farger</h2>
+                                <p class="text-gray-700 leading-relaxed mb-8">
+                                    Her er en oversikt over våre farger, kategorisert for enkel bruk. Bruk CSS-variablene der det er mulig for å sikre riktig tema.
                                 </p>
-                            </div>
-                            <div>
-                                <h3 class="text-2xl font-semibold text-gray-700 mb-2">Artig & inspirerende</h3>
-                                <p class="text-gray-600 leading-relaxed">
-                                    Vi gjør økonomi morsomt og inspirerende for kundene slik at de kan ta gode valg. Vi legger vekt på at de første og siste stegene i kundereisen skal være positive for kunden. Vi beriker kundereisen.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                `,
-                'farger': `
-                    <div class="bg-white p-8 rounded-xl shadow-lg">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Farger</h2>
-                        <p class="text-gray-700 leading-relaxed mb-8">
-                            Her er en oversikt over våre farger, kategorisert for enkel bruk. Bruk CSS-variablene der det er mulig for å sikre riktig tema.
-                        </p>
 
-                        <div class="mb-8">
-                            <h3 class="text-2xl font-semibold text-gray-700 mb-4">Whitelabeling</h3>
-                            <p class="text-gray-600 mb-4">
-                                Våre temaer er satt opp for å fungere med identiteten til de ulike bankene våre.
-                            </p>
-                            <div class="space-y-6">
-                                <div>
-                                    <h4 class="text-xl font-medium text-gray-800 mb-2">Grønt tema</h4>
+                                <div class="mb-8">
+                                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">Whitelabeling</h3>
+                                    <p class="text-gray-600 mb-4">
+                                        Våre temaer er satt opp for å fungere med identiteten til de ulike bankene våre.
+                                    </p>
+                                    <div class="space-y-6">
+                                        <div>
+                                            <h4 class="text-xl font-medium text-gray-800 mb-2">Grønt tema</h4>
+                                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#90D000]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Dark</p>
+                                                        <p class="text-xs text-gray-500">#90D000</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:31, M:0, Y:100, K:20</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--theme-dark)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#D3EC99]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Medium</p>
+                                                        <p class="text-xs text-gray-500">#D3EC99</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:10, M:0, Y:57, K:10</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--theme-medium)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#F4FAE6]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Light</p>
+                                                        <p class="text-xs text-gray-500">#F4FAE6</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:4, M:1, Y:9, K:0</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--theme-light)</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h4 class="text-xl font-medium text-gray-800 mb-2">Blått tema</h4>
+                                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#6BCEF1]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Dark</p>
+                                                        <p class="text-xs text-gray-500">#6BCEF1</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:55, M:14, Y:0, K:5</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--theme-dark)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#C0E8F6]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Medium</p>
+                                                        <p class="text-xs text-gray-500">#C0E8F6</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:21, M:5, Y:0, K:5</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--theme-medium)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#EFF9FD]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Light</p>
+                                                        <p class="text-xs text-gray-500">#EFF9FD</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:8, M:1, Y:0, K:1</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--theme-light)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#FFFFFF]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Action icon</p>
+                                                        <p class="text-xs text-gray-500">#FFFFFF</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:0, Y:0, K:0</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--action-icon-color)</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <h4 class="text-xl font-medium text-gray-800 mb-2">Larvik tema</h4>
+                                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#FFA100]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Dark</p>
+                                                        <p class="text-xs text-gray-500">#FFA100</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:37, Y:100, K:0</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--theme-dark)<br>var(--button-background-color)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#E7E9EA]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Medium</p>
+                                                        <p class="text-xs text-gray-500">#E7E9EA</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:5, M:3, Y:2, K:8</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--theme-medium)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#FFF4E0]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Light</p>
+                                                        <p class="text-xs text-gray-500">#FFF4E0</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:4, Y:11, K:0</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--theme-light)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#000000]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Action icon, button</p>
+                                                        <p class="text-xs text-gray-500">#000000</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:0, Y:0, K:100</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--action-icon-color)<br>var(--button-color)<br>var(--icon-color)<br>var(--typography-color)</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h4 class="text-xl font-medium text-gray-800 mb-2">Sandnes tema</h4>
+                                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#000000]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Dark</p>
+                                                        <p class="text-xs text-gray-500">#000000</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:0, Y:0, K:100</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--theme-dark)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#FFD600]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Medium</p>
+                                                        <p class="text-xs text-gray-500">#FFD600</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:17, Y:100, K:0</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--theme-medium)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#F1F1F1]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Light</p>
+                                                        <p class="text-xs text-gray-500">#F1F1F1</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:0, Y:0, K:6</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--theme-light)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#FFFFFF]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Action icon, button, typography</p>
+                                                        <p class="text-xs text-gray-500">#FFFFFF</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:0, Y:0, K:0</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--action-icon-color)<br>var(--button-color)<br>var(--typography-color)</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-8">
+                                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">Systemfarger</h3>
+                                    <p class="text-gray-600 mb-4">
+                                        Bruk temafargene over hvis du kan. Disse fargene er bare for å få en oversikt over alle fargene våre.
+                                    </p>
                                     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                                         <div class="rounded-lg shadow-md overflow-hidden">
-                                            <div class="w-full h-24 bg-[#90D000]"></div>
+                                            <div class="w-full h-24 bg-[#00383D]"></div>
                                             <div class="p-3 bg-gray-50">
-                                                <p class="font-semibold text-gray-800 text-sm">Dark</p>
-                                                <p class="text-xs text-gray-500">#90D000</p>
-                                                <p class="text-xs text-gray-500">CMYK: C:31, M:0, Y:100, K:20</p>
-                                                <p class="text-xs text-gray-500 font-mono">var(--theme-dark)</p>
+                                                <p class="font-semibold text-gray-800 text-sm">Seagreen dark</p>
+                                                <p class="text-xs text-gray-500">#00383D</p>
+                                                <p class="text-xs text-gray-500">CMYK: C:100, M:8, Y:0, K:75</p>
+                                                <p class="text-xs text-gray-500 font-mono">var(--seagreen-dark)</p>
                                             </div>
                                         </div>
                                         <div class="rounded-lg shadow-md overflow-hidden">
-                                            <div class="w-full h-24 bg-[#D3EC99]"></div>
+                                            <div class="w-full h-24 bg-[#4D7477]"></div>
                                             <div class="p-3 bg-gray-50">
-                                                <p class="font-semibold text-gray-800 text-sm">Medium</p>
-                                                <p class="text-xs text-gray-500">#D3EC99</p>
-                                                <p class="text-xs text-gray-500">CMYK: C:10, M:0, Y:57, K:10</p>
-                                                <p class="text-xs text-gray-500 font-mono">var(--theme-medium)</p>
+                                                <p class="font-semibold text-gray-800 text-sm">Seagreen medium</p>
+                                                <p class="text-xs text-gray-500">#4D7477</p>
+                                                <p class="text-xs text-gray-500">CMYK: C:36, M:4, Y:0, K:53</p>
+                                                <p class="text-xs text-gray-500 font-mono">var(--seagreen-medium)</p>
                                             </div>
                                         </div>
                                         <div class="rounded-lg shadow-md overflow-hidden">
-                                            <div class="w-full h-24 bg-[#F4FAE6]"></div>
+                                            <div class="w-full h-24 bg-[#97C5CA]"></div>
                                             <div class="p-3 bg-gray-50">
-                                                <p class="font-semibold text-gray-800 text-sm">Light</p>
-                                                <p class="text-xs text-gray-500">#F4FAE6</p>
-                                                <p class="text-xs text-gray-500">CMYK: C:4, M:1, Y:9, K:0</p>
-                                                <p class="text-xs text-gray-500 font-mono">var(--theme-light)</p>
+                                                <p class="font-semibold text-gray-800 text-sm">Seagreen pastel</p>
+                                                <p class="text-xs text-gray-500">#97C5CA</p>
+                                                <p class="text-xs text-gray-500">CMYK: C:25, M:2, Y:0, K:22</p>
+                                                <p class="text-xs text-gray-500 font-mono">var(--seagreen-pastel)</p>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                        <div class="rounded-lg shadow-md overflow-hidden">
+                                            <div class="w-full h-24 bg-[#C7E0E3]"></div>
+                                            <div class="p-3 bg-gray-50">
+                                                <p class="font-semibold text-gray-800 text-sm">Seagreen pastel light</p>
+                                                <p class="text-xs text-gray-500">#C7E0E3</p>
+                                                <p class="text-xs text-gray-500">CMYK: C:13, M:1, Y:0, K:11</p>
+                                                <p class="text-xs text-gray-500 font-mono">var(--seagreen-pastel-light)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#E6F3F5]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Seagreen light</p>
+                                                        <p class="text-xs text-gray-500">#E6F3F5</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:6, M:1, Y:0, K:4</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--seagreen-light)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#F0F8F9]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Seagreen xtra-light</p>
+                                                        <p class="text-xs text-gray-500">#F0F8F9</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:5, M:1, Y:0, K:2</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--seagreen-xtra-light)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#B83653]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Red</p>
+                                                        <p class="text-xs text-gray-500">#B83653</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:71, Y:56, K:28</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--red)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#FDDEE6]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Red pastel</p>
+                                                        <p class="text-xs text-gray-500">#FDDEE6</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:10, Y:8, K:1</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--red-pastel)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#B64245]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Terracotta</p>
+                                                        <p class="text-xs text-gray-500">#B64245</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:64, Y:63, K:29</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--terracotta)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#DD5C6B]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Terracotta light</p>
+                                                        <p class="text-xs text-gray-500">#DD5C6B</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:58, Y:49, K:13</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--terracotta-light)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#C2E375]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Green</p>
+                                                        <p class="text-xs text-gray-500">#C2E375</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:14, M:0, Y:67, K:11</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--green)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Green dark</p>
+                                                        <p class="text-xs text-gray-500">#90D000</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:31, M:0, Y:100, K:20</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--green-dark)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#D3EC99]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Green medium</p>
+                                                        <p class="text-xs text-gray-500">#D3EC99</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:10, M:0, Y:57, K:10</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--green-medium)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#ECF7D4]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Green pastel</p>
+                                                        <p class="text-xs text-gray-500">#ECF7D4</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:6, M:0, Y:16, K:5</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--green-pastel)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#F4FAE6]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Green light</p>
+                                                        <p class="text-xs text-gray-500">#F4FAE6</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:4, M:1, Y:9, K:0</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--green-light)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#F9CA4F]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Orange</p>
+                                                        <p class="text-xs text-gray-500">#F9CA4F</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:21, Y:68, K:4</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--orange)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#EFF9FD]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Blue light</p>
+                                                        <p class="text-xs text-gray-500">#EFF9FD</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:8, M:1, Y:0, K:1</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--blue-light)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#C0E8F6]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Blue medium</p>
+                                                        <p class="text-xs text-gray-500">#C0E8F6</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:21, M:5, Y:0, K:5</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--blue-medium)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#6BCEF1]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Blue dark</p>
+                                                        <p class="text-xs text-gray-500">#6BCEF1</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:55, M:14, Y:0, K:5</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--blue-dark)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#FFBD74]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Peach</p>
+                                                        <p class="text-xs text-gray-500">#FFBD74</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:26, Y:54, K:0</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--peach)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#FFE5C7]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Peach pastel</p>
+                                                        <p class="text-xs text-gray-500">#FFE5C7</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:9, Y:22, K:0</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--peach-pastel)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#FFEEBE]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Peach light</p>
+                                                        <p class="text-xs text-gray-500">#FFEEBE</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:4, Y:13, K:1</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--peach-light)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#F0DBEA]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Purple</p>
+                                                        <p class="text-xs text-gray-500">#F0DBEA</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:6, M:16, Y:0, K:6</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--purple)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#DCA1CB]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Purple medium</p>
+                                                        <p class="text-xs text-gray-500">#DCA1CB</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:11, M:33, Y:0, K:19</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--purple-medium)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#AE5B98]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Purple dark</p>
+                                                        <p class="text-xs text-gray-500">#AE5B98</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:16, M:46, Y:0, K:32</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--purple-dark)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#000000]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Black</p>
+                                                        <p class="text-xs text-gray-500">#000000</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:0, Y:0, K:100</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--black)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#333333]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Black charcoal</p>
+                                                        <p class="text-xs text-gray-500">#333333</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:0, Y:0, K:80</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--black-charcoal)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#C3B3AB]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Grey</p>
+                                                        <p class="text-xs text-gray-500">#C3B3AB</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:8, Y:12, K:23</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--grey)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#7C6756]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Grey dark</p>
+                                                        <p class="text-xs text-gray-500">#7C6756</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:17, Y:28, K:51</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--grey-dark)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#ECE5E0]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Grey medium</p>
+                                                        <p class="text-xs text-gray-500">#ECE5E0</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:4, M:7, Y:9, K:7</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--grey-medium)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#F7F4F2]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-500 text-sm">Grey light</p>
+                                                        <p class="text-xs text-gray-500">#F7F4F2</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:2, M:3, Y:4, K:2</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--grey-light)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#FFFFFF]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">White</p>
+                                                        <p class="text-xs text-gray-500">#FFFFFF</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:0, Y:0, K:0</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--white)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#FBFAFA]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Cotton</p>
+                                                        <p class="text-xs text-gray-500">#FBFAFA</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:1, M:1, Y:0, K:1</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--cotton)</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                <div>
-                                    <h4 class="text-xl font-medium text-gray-800 mb-2">Blått tema</h4>
-                                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                                        <div class="rounded-lg shadow-md overflow-hidden">
-                                            <div class="w-full h-24 bg-[#6BCEF1]"></div>
-                                            <div class="p-3 bg-gray-50">
-                                                <p class="font-semibold text-gray-800 text-sm">Dark</p>
-                                                <p class="text-xs text-gray-500">#6BCEF1</p>
-                                                <p class="text-xs text-gray-500">CMYK: C:55, M:14, Y:0, K:5</p>
-                                                <p class="text-xs text-gray-500 font-mono">var(--theme-dark)</p>
+                                        <div class="mb-8">
+                                            <h3 class="text-2xl font-semibold text-gray-700 mb-4">Graf- og illustrasjonsfarger</h3>
+                                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#FFEEBE]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Peach light</p>
+                                                        <p class="text-xs text-gray-500">#FFEEBE</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:4, Y:13, K:1</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--peach-light)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#FFF1CB]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Peach light 80%</p>
+                                                        <p class="text-xs text-gray-500">#FFF1CB</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:4, Y:13, K:1</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--peach-light-80)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#FFF5D8]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Peach light 60%</p>
+                                                        <p class="text-xs text-gray-500">#FFF5D8</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:3, Y:9, K:1</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--peach-light-60)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#FFF8E5]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Peach light 40%</p>
+                                                        <p class="text-xs text-gray-500">#FFF8E5</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:2, Y:6, K:1</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--peach-light-40)</p>
+                                                    </div>
+                                                </div>
+                                                <div class="rounded-lg shadow-md overflow-hidden">
+                                                    <div class="w-full h-24 bg-[#FFFCF2]"></div>
+                                                    <div class="p-3 bg-gray-50">
+                                                        <p class="font-semibold text-gray-800 text-sm">Peach light 20%</p>
+                                                        <p class="text-xs text-gray-500">#FFFCF2</p>
+                                                        <p class="text-xs text-gray-500">CMYK: C:0, M:1, Y:3, K:1</p>
+                                                        <p class="text-xs text-gray-500 font-mono">var(--peach-light-20)</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="rounded-lg shadow-md overflow-hidden">
-                                            <div class="w-full h-24 bg-[#C0E8F6]"></div>
-                                            <div class="p-3 bg-gray-50">
-                                                <p class="font-semibold text-gray-800 text-sm">Medium</p>
-                                                <p class="text-xs text-gray-500">#C0E8F6</p>
-                                                <p class="text-xs text-gray-500">CMYK: C:21, M:5, Y:0, K:5</p>
-                                                <p class="text-xs text-gray-500 font-mono">var(--theme-medium)</p>
-                                            </div>
-                                        </div>
-                                        <div class="rounded-lg shadow-md overflow-hidden">
-                                            <div class="w-full h-24 bg-[#EFF9FD]"></div>
-                                            <div class="p-3 bg-gray-50">
-                                                <p class="font-semibold text-gray-800 text-sm">Light</p>
-                                                <p class="text-xs text-gray-500">#EFF9FD</p>
-                                                <p class="text-xs text-gray-500">CMYK: C:8, M:1, Y:0, K:1</p>
-                                                <p class="text-xs text-gray-500 font-mono">var(--theme-light)</p>
-                                            </div>
-                                        </div>
-                                        <div class="rounded-lg shadow-md overflow-hidden">
-                                            <div class="w-full h-24 bg-[#FFFFFF]"></div>
-                                            <div class="p-3 bg-gray-50">
-                                                <p class="font-semibold text-gray-800 text-sm">Action icon</p>
-                                                <p class="text-xs text-gray-500">#FFFFFF</p>
-                                                <p class="text-xs text-gray-500">CMYK: C:0, M:0, Y:0, K:0</p>
-                                                <p class="text-xs text-gray-500 font-mono">var(--action-icon-color)</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div>
-                                    <h4 class="text-xl font-medium text-gray-800 mb-2">Larvik tema</h4>
-                                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                                        <div class="rounded-lg shadow-md overflow-hidden">
-                                            <div class="w-full h-24 bg-[#FFA100]"></div>
-                                            <div class="p-3 bg-gray-50">
-                                                <p class="font-semibold text-gray-800 text-sm">Dark</p>
-                                                <p class="text-xs text-gray-500">#FFA100</p>
-                                                <p class="text-xs text-gray-500">CMYK: C:0, M:37, Y:100, K:0</p>
-                                                <p class="text-xs text-gray-500 font-mono">var(--theme-dark)<br>var(--button-background-color)</p>
-                                            </div>
-                                        </div>
-                                        <div class="rounded-lg shadow-md overflow-hidden">
-                                            <div class="w-full h-24 bg-[#E7E9EA]"></div>
-                                            <div class="p-3 bg-gray-50">
-                                                <p class="font-semibold text-gray-800 text-sm">Medium</p>
-                                                <p class="text-xs text-gray-500">#E7E9EA</p>
-                                                <p class="text-xs text-gray-500">CMYK: C:5, M:3, Y:2, K:8</p>
-                                                <p class="text-xs text-gray-500 font-mono">var(--theme-medium)</p>
-                                            </div>
-                                        </div>
-                                        <div class="rounded-lg shadow-md overflow-hidden">
-                                            <div class="w-full h-24 bg-[#FFF4E0]"></div>
-                                            <div class="p-3 bg-gray-50">
-                                                <p class="font-semibold text-gray-800 text-sm">Light</p>
-                                                <p class="text-xs text-gray-500">#FFF4E0</p>
-                                                <p class="text-xs text-gray-500">CMYK: C:0, M:4, Y:11, K:0</p>
-                                                <p class="text-xs text-gray-500 font-mono">var(--theme-light)</p>
-                                            </div>
-                                        </div>
-                                        <div class="rounded-lg shadow-md overflow-hidden">
-                                            <div class="w-full h-24 bg-[#000000]"></div>
-                                            <div class="p-3 bg-gray-50">
-                                                <p class="font-semibold text-gray-800 text-sm">Action icon, button</p>
-                                                <p class="text-xs text-gray-500">#000000</p>
-                                                <p class="text-xs text-gray-500">CMYK: C:0, M:0, Y:0, K:100</p>
-                                                <p class="text-xs text-gray-500 font-mono">var(--action-icon-color)<br>var(--button-color)<br>var(--icon-color)<br>var(--typography-color)</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div>
-                                    <h4 class="text-xl font-medium text-gray-800 mb-2">Sandnes tema</h4>
-                                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                                        <div class="rounded-lg shadow-md overflow-hidden">
-                                            <div class="w-full h-24 bg-[#000000]"></div>
-                                            <div class="p-3 bg-gray-50">
-                                                <p class="font-semibold text-gray-800 text-sm">Dark</p>
-                                                <p class="text-xs text-gray-500">#000000</p>
-                                                <p class="text-xs text-gray-500">CMYK: C:0, M:0, Y:0, K:100</p>
-                                                <p class="text-xs text-gray-500 font-mono">var(--theme-dark)</p>
+                                    </div>
+                                `;
+                            case 'typografi':
+                                return `
+                                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Typografi</h2>
+                                        <div class="flex items-center space-x-4 mb-8">
+                                            <span class="text-4xl font-black text-gray-800">Aa</span>
+                                            <span class="text-2xl font-light text-gray-700">Open Sans</span>
+                                        </div>
+                                        <div class="grid md:grid-cols-2 gap-8 mb-8">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-gray-800">Hovedoverskrifter</h3>
+                                                <ul class="list-disc list-inside space-y-2 text-gray-600 mt-2">
+                                                    <li><strong>H1:</strong> Hovedtittel</li>
+                                                    <li><strong>H2:</strong> Undertittel</li>
+                                                    <li><strong>H3:</strong> Tittel</li>
+                                                    <li><strong>Subtitle:</strong> Undertittel</li>
+                                                </ul>
+                                                <code class="block mt-4 p-2 bg-gray-200 rounded-lg text-sm text-gray-700 font-mono">var(--typography-color)</code>
                                             </div>
                                         </div>
-                                        <div class="rounded-lg shadow-md overflow-hidden">
-                                            <div class="w-full h-24 bg-[#FFD600]"></div>
-                                            <div class="p-3 bg-gray-50">
-                                                <p class="font-semibold text-gray-800 text-sm">Medium</p>
-                                                <p class="text-xs text-gray-500">#FFD600</p>
-                                                <p class="text-xs text-gray-500">CMYK: C:0, M:17, Y:100, K:0</p>
-                                                <p class="text-xs text-gray-500 font-mono">var(--theme-medium)</p>
+                                        
+                                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Typeprøver</h3>
+                                        <div class="space-y-6">
+                                            <div>
+                                                <h4 class="text-base font-normal text-gray-800 mb-2">Default</h4>
+                                                <p class="text-base font-normal text-gray-600 leading-relaxed">
+                                                    Default. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-base font-semibold text-gray-800 mb-2">Default semibold</h4>
+                                                <p class="text-base font-semibold text-gray-600 leading-relaxed">
+                                                    Default semibold. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-base font-bold text-gray-800 mb-2">Default bold</h4>
+                                                <p class="text-base font-bold text-gray-600 leading-relaxed">
+                                                    Default bold. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-base italic text-gray-800 mb-2">Italic</h4>
+                                                <p class="text-base italic text-gray-600 leading-relaxed">
+                                                    Italic. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-4xl font-bold text-gray-800 mb-2">H1</h4>
+                                                <p class="text-4xl font-bold text-gray-600 leading-relaxed">
+                                                    H1. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-4xl font-light text-gray-800 mb-2">H1 Light</h4>
+                                                <p class="text-4xl font-light text-gray-600 leading-relaxed">
+                                                    H1 Light. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-4xl font-bold text-indigo-600 mb-2">H1 Eika Large</h4>
+                                                <p class="text-4xl font-bold text-indigo-600 leading-relaxed">
+                                                    H1 Eika Large. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-5xl font-extrabold text-gray-800 mb-2">H1 Display</h4>
+                                                <p class="text-5xl font-extrabold text-gray-800 leading-relaxed">
+                                                    H1 Display. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-3xl font-bold text-gray-800 mb-2">H2</h4>
+                                                <p class="text-3xl font-bold text-gray-600 leading-relaxed">
+                                                    H2. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-3xl font-light text-gray-800 mb-2">H2 Light</h4>
+                                                <p class="text-3xl font-light text-gray-600 leading-relaxed">
+                                                    H2 Light. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-2xl font-bold text-gray-800 mb-2">H3</h4>
+                                                <p class="text-2xl font-bold text-gray-600 leading-relaxed">
+                                                    H3. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-xl font-normal text-gray-800 mb-2">Subtitle</h4>
+                                                <p class="text-xl font-normal text-gray-600 leading-relaxed">
+                                                    Subtitle. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-xl font-bold text-gray-800 mb-2">Subtitle Bold</h4>
+                                                <p class="text-xl font-bold text-gray-600 leading-relaxed">
+                                                    Subtitle Bold. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-base font-normal text-gray-800 mb-2">Brødtekst</h4>
+                                                <p class="text-base font-normal text-gray-600 leading-relaxed">
+                                                    Brødtekst (Paragraph). Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-sm font-normal text-gray-800 mb-2">Small</h4>
+                                                <p class="text-sm font-normal text-gray-600 leading-relaxed">
+                                                    Small. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-sm font-semibold text-gray-800 mb-2">Small semibold</h4>
+                                                <p class="text-sm font-semibold text-gray-600 leading-relaxed">
+                                                    Small semibold. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-sm font-bold text-gray-800 mb-2">Small bold</h4>
+                                                <p class="text-sm font-bold text-gray-600 leading-relaxed">
+                                                    Small bold. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-xs font-normal text-gray-800 mb-2">Caption</h4>
+                                                <p class="text-xs font-normal text-gray-600 leading-relaxed">
+                                                    Caption. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-xs font-bold text-gray-800 mb-2">Caption Bold</h4>
+                                                <p class="text-xs font-bold text-gray-600 leading-relaxed">
+                                                    Caption Bold. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-xl font-normal text-gray-800 mb-2">Ingress</h4>
+                                                <p class="text-xl font-normal text-gray-600 leading-relaxed">
+                                                    Ingress. Når man har en ingress som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-xl font-light text-gray-800 mb-2">Ingress Light</h4>
+                                                <p class="text-xl font-light text-gray-600 leading-relaxed">
+                                                    Ingress Light. Når man har en ingress som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-base italic font-normal text-gray-800 mb-2">Sitat</h4>
+                                                <p class="text-base italic font-normal text-gray-600 leading-relaxed">
+                                                    Sitat. Når man har et sitat som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
+                                                </p>
                                             </div>
                                         </div>
-                                        <div class="rounded-lg shadow-md overflow-hidden">
-                                            <div class="w-full h-24 bg-[#F1F1F1]"></div>
-                                            <div class="p-3 bg-gray-50">
-                                                <p class="font-semibold text-gray-800 text-sm">Light</p>
-                                                <p class="text-xs text-gray-500">#F1F1F1</p>
-                                                <p class="text-xs text-gray-500">CMYK: C:0, M:0, Y:0, K:6</p>
-                                                <p class="text-xs text-gray-500 font-mono">var(--theme-light)</p>
+                                    </div>
+                                `;
+                            case 'eika_merkevare':
+                                return `
+                                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Eika merkevare</h2>
+                                        <p class="text-gray-700 leading-relaxed mb-4">
+                                            Vår kommunikasjon og merkevarestrategi er bygget på en klar og konsistent stemme. Vi streber etter å være pålitelige, hjelpsomme og imøtekommende i all vår interaksjon.
+                                        </p>
+                                        <div class="space-y-6 mt-6">
+                                            <div>
+                                                <h3 class="text-2xl font-semibold text-gray-700 mb-2">Vår stemme og tone</h3>
+                                                <p class="text-gray-600 leading-relaxed">
+                                                    Tonen vår er profesjonell, men vennlig og tilgjengelig. Vi unngår teknisk sjargong når det er mulig, og fokuserer på å kommunisere klart og enkelt.
+                                                </p>
+                                            </div>
+                                            <div>
+                                                <h3 class="text-2xl font-semibold text-gray-700 mb-2">Visuell merkevare</h3>
+                                                <p class="text-gray-600 leading-relaxed">
+                                                    Merkevarens visuelle identitet er forankret i vår fargepalett, typografi og ikonografi. Vi sikrer at alle visuelle elementer bidrar til en gjenkjennelig og pålitelig merkevare.
+                                                </p>
                                             </div>
                                         </div>
-                                        <div class="rounded-lg shadow-md overflow-hidden">
-                                            <div class="w-full h-24 bg-[#FFFFFF]"></div>
-                                            <div class="p-3 bg-gray-50">
-                                                <p class="font-semibold text-gray-800 text-sm">Action icon, button, typography</p>
-                                                <p class="text-xs text-gray-500">#FFFFFF</p>
-                                                <p class="text-xs text-gray-500">CMYK: C:0, M:0, Y:0, K:0</p>
-                                                <p class="text-xs text-gray-500 font-mono">var(--action-icon-color)<br>var(--button-color)<br>var(--typography-color)</p>
+                                        <div class="mt-8">
+                                            <h3 class="text-2xl font-semibold text-gray-700 mb-2">Last ned bilder</h3>
+                                            <p class="text-gray-600 leading-relaxed mb-4">
+                                                Alle bilder er tilgjengelig i ulike størrelser avhengig av bruksformål. For å få tilgang til de ulike formatene trykk på bildet og velg "Related assets"
+                                            </p>
+                                            <div class="bg-gray-100 p-4 rounded-lg">
+                                                <iframe src="https://hwfuyq.collections.cmp.optimizely.com/api/library-collection/54c8372483f811f0a4a816fc31a2a722?format=compact" style="top:0; left:0; bottom:0; right:0; width:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999999; min-width: 930px; min-height: 1250px;"></iframe>
+                                            </div>
+                                        </div>
+                                        <div class="mt-8" id="sloganGenerator">
+                                            <h3 class="text-2xl font-semibold text-gray-700 mb-2">Skap en Eika-slogan med ✨Gemini</h3>
+                                            <p class="text-gray-600 leading-relaxed mb-4">
+                                                Skriv inn noen nøkkelord eller et tema, og la AI generere en kreativ slogan for deg.
+                                            </p>
+                                            <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                                                <input type="text" id="sloganInput" placeholder="F.eks. 'trygg, fremtidsrettet, personlig'" class="flex-1 py-2 px-4 rounded-lg bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-700">
+                                                <button id="sloganBtn" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-200">
+                                                    ✨ Generer slogan
+                                                </button>
+                                            </div>
+                                            <div id="sloganResult" class="text-gray-800 font-semibold p-4 rounded-lg bg-gray-50 border border-gray-200">
+                                                Sloganen din vil vises her...
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mb-8">
-                            <h3 class="text-2xl font-semibold text-gray-700 mb-4">Systemfarger</h3>
-                            <p class="text-gray-600 mb-4">
-                                Bruk temafargene over hvis du kan. Disse fargene er bare for å få en oversikt over alle fargene våre.
-                            </p>
-                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#00383D]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Seagreen dark</p>
-                                        <p class="text-xs text-gray-500">#00383D</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:100, M:8, Y:0, K:75</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--seagreen-dark)</p>
+                                `;
+                            case 'grong_sparebank':
+                                return `
+                                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Grong Sparebank</h2>
+                                        <p class="text-gray-700 leading-relaxed mb-4">
+                                            Her finner du ressurser og retningslinjer for banker som benytter Eika-merkevaren, inkludert bruk av logoer.
+                                        </p>
+                                        <div class="bg-gray-100 p-4 rounded-lg">
+                                            <iframe src="https://hwfuyq.collections.cmp.optimizely.com/api/library-collection/90525ad0874111f0b4b9462883aa0652?format=compact" style="top:0; left:0; bottom:0; right:0; width:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999999; min-width: 930px; min-height: 1250px;"></iframe>
+                                            </div>
+                                        </div>
+                                    `;
+                            case 'logoer':
+                                return `
+                                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Logoer</h2>
+                                        <p class="text-gray-700 leading-relaxed mb-8">Her kan du laste ned de offisielle logoene og se all tilhørende informasjon.</p>
+                                        <p>Henter data...</p>
                                     </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#4D7477]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Seagreen medium</p>
-                                        <p class="text-xs text-gray-500">#4D7477</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:36, M:4, Y:0, K:53</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--seagreen-medium)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#97C5CA]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Seagreen pastel</p>
-                                        <p class="text-xs text-gray-500">#97C5CA</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:25, M:2, Y:0, K:22</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--seagreen-pastel)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#C7E0E3]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Seagreen pastel light</p>
-                                        <p class="text-xs text-gray-500">#C7E0E3</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:13, M:1, Y:0, K:11</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--seagreen-pastel-light)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#E6F3F5]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Seagreen light</p>
-                                        <p class="text-xs text-gray-500">#E6F3F5</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:6, M:1, Y:0, K:4</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--seagreen-light)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#F0F8F9]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Seagreen xtra-light</p>
-                                        <p class="text-xs text-gray-500">#F0F8F9</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:5, M:1, Y:0, K:2</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--seagreen-xtra-light)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#B83653]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Red</p>
-                                        <p class="text-xs text-gray-500">#B83653</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:71, Y:56, K:28</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--red)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#FDDEE6]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Red pastel</p>
-                                        <p class="text-xs text-gray-500">#FDDEE6</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:10, Y:8, K:1</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--red-pastel)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#B64245]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Terracotta</p>
-                                        <p class="text-xs text-gray-500">#B64245</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:64, Y:63, K:29</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--terracotta)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#DD5C6B]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Terracotta light</p>
-                                        <p class="text-xs text-gray-500">#DD5C6B</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:58, Y:49, K:13</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--terracotta-light)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#C2E375]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Green</p>
-                                        <p class="text-xs text-gray-500">#C2E375</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:14, M:0, Y:67, K:11</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--green)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Green dark</p>
-                                        <p class="text-xs text-gray-500">#90D000</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:31, M:0, Y:100, K:20</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--green-dark)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#D3EC99]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Green medium</p>
-                                        <p class="text-xs text-gray-500">#D3EC99</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:10, M:0, Y:57, K:10</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--green-medium)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#ECF7D4]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Green pastel</p>
-                                        <p class="text-xs text-gray-500">#ECF7D4</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:6, M:0, Y:16, K:5</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--green-pastel)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#F4FAE6]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Green light</p>
-                                        <p class="text-xs text-gray-500">#F4FAE6</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:4, M:1, Y:9, K:0</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--green-light)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#F9CA4F]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Orange</p>
-                                        <p class="text-xs text-gray-500">#F9CA4F</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:21, Y:68, K:4</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--orange)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#EFF9FD]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Blue light</p>
-                                        <p class="text-xs text-gray-500">#EFF9FD</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:8, M:1, Y:0, K:1</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--blue-light)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#C0E8F6]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Blue medium</p>
-                                        <p class="text-xs text-gray-500">#C0E8F6</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:21, M:5, Y:0, K:5</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--blue-medium)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#6BCEF1]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Blue dark</p>
-                                        <p class="text-xs text-gray-500">#6BCEF1</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:55, M:14, Y:0, K:5</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--blue-dark)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#FFBD74]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Peach</p>
-                                        <p class="text-xs text-gray-500">#FFBD74</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:26, Y:54, K:0</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--peach)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#FFE5C7]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Peach pastel</p>
-                                        <p class="text-xs text-gray-500">#FFE5C7</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:9, Y:22, K:0</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--peach-pastel)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#FFEEBE]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Peach light</p>
-                                        <p class="text-xs text-gray-500">#FFEEBE</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:4, Y:13, K:1</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--peach-light)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#F0DBEA]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Purple</p>
-                                        <p class="text-xs text-gray-500">#F0DBEA</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:6, M:16, Y:0, K:6</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--purple)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#DCA1CB]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Purple medium</p>
-                                        <p class="text-xs text-gray-500">#DCA1CB</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:11, M:33, Y:0, K:19</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--purple-medium)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#AE5B98]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Purple dark</p>
-                                        <p class="text-xs text-gray-500">#AE5B98</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:16, M:46, Y:0, K:32</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--purple-dark)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#000000]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Black</p>
-                                        <p class="text-xs text-gray-500">#000000</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:0, Y:0, K:100</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--black)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#333333]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Black charcoal</p>
-                                        <p class="text-xs text-gray-500">#333333</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:0, Y:0, K:80</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--black-charcoal)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#C3B3AB]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Grey</p>
-                                        <p class="text-xs text-gray-500">#C3B3AB</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:8, Y:12, K:23</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--grey)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#7C6756]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Grey dark</p>
-                                        <p class="text-xs text-gray-500">#7C6756</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:17, Y:28, K:51</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--grey-dark)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#ECE5E0]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Grey medium</p>
-                                        <p class="text-xs text-gray-500">#ECE5E0</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:4, M:7, Y:9, K:7</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--grey-medium)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#F7F4F2]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-500 text-sm">Grey light</p>
-                                        <p class="text-xs text-gray-500">#F7F4F2</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:2, M:3, Y:4, K:2</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--grey-light)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#FFFFFF]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">White</p>
-                                        <p class="text-xs text-gray-500">#FFFFFF</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:0, Y:0, K:0</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--white)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#FBFAFA]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Cotton</p>
-                                        <p class="text-xs text-gray-500">#FBFAFA</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:1, M:1, Y:0, K:1</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--cotton)</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mb-8">
-                            <h3 class="text-2xl font-semibold text-gray-700 mb-4">Graf- og illustrasjonsfarger</h3>
-                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#FFEEBE]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Peach light</p>
-                                        <p class="text-xs text-gray-500">#FFEEBE</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:4, Y:13, K:1</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--peach-light)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#FFF1CB]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Peach light 80%</p>
-                                        <p class="text-xs text-gray-500">#FFF1CB</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:4, Y:13, K:1</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--peach-light-80)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#FFF5D8]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Peach light 60%</p>
-                                        <p class="text-xs text-gray-500">#FFF5D8</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:3, Y:9, K:1</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--peach-light-60)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#FFF8E5]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Peach light 40%</p>
-                                        <p class="text-xs text-gray-500">#FFF8E5</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:2, Y:6, K:1</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--peach-light-40)</p>
-                                    </div>
-                                </div>
-                                <div class="rounded-lg shadow-md overflow-hidden">
-                                    <div class="w-full h-24 bg-[#FFFCF2]"></div>
-                                    <div class="p-3 bg-gray-50">
-                                        <p class="font-semibold text-gray-800 text-sm">Peach light 20%</p>
-                                        <p class="text-xs text-gray-500">#FFFCF2</p>
-                                        <p class="text-xs text-gray-500">CMYK: C:0, M:1, Y:3, K:1</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--peach-light-20)</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                `,
-                'typografi': `
-                    <div class="bg-white p-8 rounded-xl shadow-lg">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Typografi</h2>
-                        <div class="flex items-center space-x-4 mb-8">
-                            <span class="text-4xl font-black text-gray-800">Aa</span>
-                            <span class="text-2xl font-light text-gray-700">Open Sans</span>
-                        </div>
-                        <div class="grid md:grid-cols-2 gap-8 mb-8">
-                            <div>
-                                <h3 class="text-lg font-semibold text-gray-800">Hovedoverskrifter</h3>
-                                <ul class="list-disc list-inside space-y-2 text-gray-600 mt-2">
-                                    <li><strong>H1:</strong> Hovedtittel</li>
-                                    <li><strong>H2:</strong> Undertittel</li>
-                                    <li><strong>H3:</strong> Tittel</li>
-                                    <li><strong>Subtitle:</strong> Undertittel</li>
-                                </ul>
-                                <code class="block mt-4 p-2 bg-gray-200 rounded-lg text-sm text-gray-700 font-mono">var(--typography-color)</code>
-                            </div>
-                        </div>
-                        
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Typeprøver</h3>
-                        <div class="space-y-6">
-                            <div>
-                                <h4 class="text-base font-normal text-gray-800 mb-2">Default</h4>
-                                <p class="text-base font-normal text-gray-600 leading-relaxed">
-                                    Default. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-base font-semibold text-gray-800 mb-2">Default semibold</h4>
-                                <p class="text-base font-semibold text-gray-600 leading-relaxed">
-                                    Default semibold. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-base font-bold text-gray-800 mb-2">Default bold</h4>
-                                <p class="text-base font-bold text-gray-600 leading-relaxed">
-                                    Default bold. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-base italic text-gray-800 mb-2">Italic</h4>
-                                <p class="text-base italic text-gray-600 leading-relaxed">
-                                    Italic. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-4xl font-bold text-gray-800 mb-2">H1</h4>
-                                <p class="text-4xl font-bold text-gray-600 leading-relaxed">
-                                    H1. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-4xl font-light text-gray-800 mb-2">H1 Light</h4>
-                                <p class="text-4xl font-light text-gray-600 leading-relaxed">
-                                    H1 Light. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-4xl font-bold text-indigo-600 mb-2">H1 Eika Large</h4>
-                                <p class="text-4xl font-bold text-indigo-600 leading-relaxed">
-                                    H1 Eika Large. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-5xl font-extrabold text-gray-800 mb-2">H1 Display</h4>
-                                <p class="text-5xl font-extrabold text-gray-800 leading-relaxed">
-                                    H1 Display. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-3xl font-bold text-gray-800 mb-2">H2</h4>
-                                <p class="text-3xl font-bold text-gray-600 leading-relaxed">
-                                    H2. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-3xl font-light text-gray-800 mb-2">H2 Light</h4>
-                                <p class="text-3xl font-light text-gray-600 leading-relaxed">
-                                    H2 Light. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-2xl font-bold text-gray-800 mb-2">H3</h4>
-                                <p class="text-2xl font-bold text-gray-600 leading-relaxed">
-                                    H3. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-normal text-gray-800 mb-2">Subtitle</h4>
-                                <p class="text-xl font-normal text-gray-600 leading-relaxed">
-                                    Subtitle. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-bold text-gray-800 mb-2">Subtitle Bold</h4>
-                                <p class="text-xl font-bold text-gray-600 leading-relaxed">
-                                    Subtitle Bold. Når man har en tittel som går over flere linjer vil det se sånn her ut med ny linjeavstand.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-base font-normal text-gray-800 mb-2">Brødtekst</h4>
-                                <p class="text-base font-normal text-gray-600 leading-relaxed">
-                                    Brødtekst (Paragraph). Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-normal text-gray-800 mb-2">Small</h4>
-                                <p class="text-sm font-normal text-gray-600 leading-relaxed">
-                                    Small. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-semibold text-gray-800 mb-2">Small semibold</h4>
-                                <p class="text-sm font-semibold text-gray-600 leading-relaxed">
-                                    Small semibold. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-gray-800 mb-2">Small bold</h4>
-                                <p class="text-sm font-bold text-gray-600 leading-relaxed">
-                                    Small bold. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-xs font-normal text-gray-800 mb-2">Caption</h4>
-                                <p class="text-xs font-normal text-gray-600 leading-relaxed">
-                                    Caption. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-xs font-bold text-gray-800 mb-2">Caption Bold</h4>
-                                <p class="text-xs font-bold text-gray-600 leading-relaxed">
-                                    Caption Bold. Når man har en tekst som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-normal text-gray-800 mb-2">Ingress</h4>
-                                <p class="text-xl font-normal text-gray-600 leading-relaxed">
-                                    Ingress. Når man har en ingress som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-light text-gray-800 mb-2">Ingress Light</h4>
-                                <p class="text-xl font-light text-gray-600 leading-relaxed">
-                                    Ingress Light. Når man har en ingress som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
-                                </p>
-                            </div>
-                            <div>
-                                <h4 class="text-base italic font-normal text-gray-800 mb-2">Sitat</h4>
-                                <p class="text-base italic font-normal text-gray-600 leading-relaxed">
-                                    Sitat. Når man har et sitat som går over flere linjer vil det se sånn her ut med ny linjeavstand. Vi tilbyr deg som kunde en smart og enkel hverdagsbank, er tilstede.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                `,
-                'vår_merkevare': `
-                    <div class="bg-white p-8 rounded-xl shadow-lg">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Vår merkevare</h2>
-                        <p class="text-gray-700 leading-relaxed mb-4">
-                            Vår kommunikasjon og merkevarestrategi er bygget på en klar og konsistent stemme. Vi streber etter å være pålitelige, hjelpsomme og imøtekommende i all vår interaksjon.
-                        </p>
-                        <div class="space-y-6 mt-6">
-                            <div>
-                                <h3 class="text-2xl font-semibold text-gray-700 mb-2">Vår stemme og tone</h3>
-                                <p class="text-gray-600 leading-relaxed">
-                                    Tonen vår er profesjonell, men vennlig og tilgjengelig. Vi unngår teknisk sjargong når det er mulig, og fokuserer på å kommunisere klart og enkelt.
-                                </p>
-                            </div>
-                            <div>
-                                <h3 class="text-2xl font-semibold text-gray-700 mb-2">Visuell merkevare</h3>
-                                <p class="text-gray-600 leading-relaxed">
-                                    Merkevarens visuelle identitet er forankret i vår fargepalett, typografi og ikonografi. Vi sikrer at alle visuelle elementer bidrar til en gjenkjennelig og pålitelig merkevare.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="mt-8">
-                            <h3 class="text-2xl font-semibold text-gray-700 mb-2">Last ned bilder</h3>
-                            <p class="text-gray-600 leading-relaxed mb-4">
-                                Alle bilder er tilgjengelig i ulike størrelser avhengig av bruksformål. For å få tilgang til de ulike formatene trykk på bildet og velg "Related assets"
-                            </p>
-                            <div class="bg-gray-100 p-4 rounded-lg">
-                                <iframe src="https://hwfuyq.collections.cmp.optimizely.com/api/library-collection/54c8372483f811f0a4a816fc31a2a722?format=compact" style="top:0; left:0; bottom:0; right:0; width:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999999; min-width: 930px; min-height: 1250px;"></iframe>
-                            </div>
-                        </div>
-                        <div class="mt-8" id="sloganGenerator">
-                            <h3 class="text-2xl font-semibold text-gray-700 mb-2">Skap en slogan med ✨Gemini</h3>
-                            <p class="text-gray-600 leading-relaxed mb-4">
-                                Skriv inn noen nøkkelord eller et tema, og la AI generere en kreativ slogan for deg.
-                            </p>
-                            <div class="flex flex-col sm:flex-row gap-4 mb-4">
-                                <input type="text" id="sloganInput" placeholder="F.eks. 'trygg, fremtidsrettet, personlig'" class="flex-1 py-2 px-4 rounded-lg bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-700">
-                                <button id="sloganBtn" class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-200">
-                                    ✨ Generer slogan
-                                </button>
-                            </div>
-                            <div id="sloganResult" class="text-gray-800 font-semibold p-4 rounded-lg bg-gray-50 border border-gray-200">
-                                Sloganen din vil vises her...
-                            </div>
-                        </div>
-                    </div>
-                `,
-                'grong_sparebank': `
-                    <div class="bg-white p-8 rounded-xl shadow-lg">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Grong Sparebank</h2>
-                        <p class="text-gray-700 leading-relaxed mb-4">
-                            Her finner du ressurser og retningslinjer for banker som benytter Eika-merkevaren, inkludert bruk av logoer.
-                        </p>
-                        <div class="bg-gray-100 p-4 rounded-lg">
-                            <iframe src="https://hwfuyq.collections.cmp.optimizely.com/api/library-collection/90525ad0874111f0b4b9462883aa0652?format=compact" style="top:0; left:0; bottom:0; right:0; width:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999999; min-width: 930px; min-height: 1250px;"></iframe>
-                            </div>
-                        </div>
-                    `,
-                'logoer': `
-                    <div class="bg-white p-8 rounded-xl shadow-lg">
-                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Logoer</h2>
-                        <p class="text-gray-700 leading-relaxed mb-8">Her kan du laste ned de offisielle logoene og se all tilhørende informasjon.</p>
-                        <p>Henter data...</p>
-                    </div>
-                `
-                };
+                                `;
+                            default:
+                                return `<h1>Innhold ikke funnet</h1>`;
+                        }
+                    };
 
             // Function to render content based on the section
             const renderContent = (section) => {
@@ -1204,15 +1216,15 @@
                     activeLink.classList.add('bg-indigo-600', 'text-white');
                 }
                 
-                contentArea.innerHTML = sections[section] || '<h1>Innhold ikke funnet</h1>';
+                contentArea.innerHTML = getContent(section);
                 
                 // If the section is 'logoer', fetch and render the content
                 if (section === 'logoer') {
                     renderLogos();
                 }
 
-                // If the section is 'vår_merkevare', set up the slogan generator
-                if (section === 'vår_merkevare') {
+                // If the section is 'eika_merkevare', set up the slogan generator
+                if (section === 'eika_merkevare') {
                     setupSloganGenerator();
                 }
             };
