@@ -120,18 +120,8 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="#narvik_sparebank" data-section="narvik_sparebank" class="nav-link block px-4 py-2 mb-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
-                                                            Narvik Sparebank
-                                                        </a>
-                                                    </li>
-                                                    <li>
                                                         <a href="#logoer" data-section="logoer" class="nav-link block px-4 py-2 mb-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
                                                             Logoer (Grong)
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#logoer_narvik" data-section="logoer_narvik" class="nav-link block px-4 py-2 mb-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-700 font-medium transition duration-200">
-                                                            Logoer (Narvik)
                                                         </a>
                                                     </li>
                                                 </ul>
@@ -214,16 +204,17 @@
                     "folder": folderId
                 };
 
-                // Vennligst erstatt denne URL-en med din faktiske GraphQL-endepunkt
-                const apiUrl = 'https://cg.optimizely.com/content/v2';
-                const token = 'a2bc6573f32769af0686d16886e3e771';
+                // URL for GraphQL-endepunktet
+                const apiUrl = 'https://cg.optimizely.com/content/v2?stored=false&cache=true&omit_empty=false';
+                const token = 'XcAMNFEha4uZf1EfhxCmKMWbeyEM2XfLsBMmN1MGkMuJbENR';
 
                 try {
-                    const response = await fetch(`${apiUrl}?auth=${token}`, {
+                    const response = await fetch(apiUrl, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'Accept': 'application/json'
+                            'Accept': 'application/json',
+                            'Authorization': `epi-single ${token}`
                         },
                         body: JSON.stringify({ query, variables })
                     });
@@ -1217,48 +1208,10 @@
                                             </div>
                                         </div>
                                     `;
-                            case 'narvik_sparebank':
-                                return `
-                                    <div class="bg-white p-8 rounded-xl shadow-lg">
-                                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Narvik Sparebank</h2>
-                                        <p class="text-gray-700 leading-relaxed font-bold mb-4">
-                                            Narvik Sparebank kommuniserer om økonomi på en jordnær og trygg måte, rettet mot "vanlige folk." De unngår kompliserte faguttrykk og fokuserer på tre hovedprinsipper: forenkling, konkrete eksempler og lokal tilknytning.
-                                        </p>
-                                        <div>
-                                            <h3 class="text-2xl font-semibold text-gray-700 mb-2">Enkel og tilgjengelig kommunikasjon</h3>
-                                            <p class="text-gray-600 leading-relaxed mb-4">
-                                                Banken gjør økonomi mindre skremmende ved å bruke et enkelt språk. De beroliger kundene med utsagn som "Sunn økonomi handler ikke om å være et tallgeni, men om å ta små og smarte grep," og forsikrer at "det finnes ingen dumme spørsmål." De bryter ned store temaer til overkommelige handlinger, som å starte sparing med bare 100 kroner, og gjør dermed økonomisk kontroll oppnåelig for alle.
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <h3 class="text-2xl font-semibold text-gray-700 mb-2">Praktiske og handlingsrettede råd</h3>
-                                            <p class="text-gray-600 leading-relaxed mb-4">
-                                                Narvik Sparebank gir konkrete tips som kundene kan bruke i hverdagen. Eksempler inkluderer enkle metoder for å håndtere privatøkonomien, som å sette opp budsjett og bruke flere kontoer. De tar også opp viktige temaer som svindel på en forståelig måte, med gjenkjennelige eksempler fra hverdagen og klare råd som "Stopp opp og tenk" og "Aldri del BankID-passordet!"
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <h3 class="text-2xl font-semibold text-gray-700 mb-2">Lokal og personlig service</h3>
-                                            <p class="text-gray-600 leading-relaxed mb-4">
-                                                Banken understreker sin sterke lokale forankring og posisjonerer seg som en del av lokalsamfunnet. De kombinerer digitale løsninger med personlig rådgivning, og lover at de er lett tilgjengelige for kundene. Narvik Sparebank fremstiller seg ikke som en fjern institusjon, men som en pålitelig partner som er der for å hjelpe kundene å navigere i sin økonomi. Deres overordnede budskap er at de er en støttespiller, med en holdning som sier: "du kan få til dette," og "vi er her for å hjelpe deg."
-                                            </p>
-                                        </div>
-                                        <div class="bg-gray-100 p-4 rounded-lg">
-                                            <iframe src="https://hwfuyq.collections.cmp.optimizely.com/api/library-collection/PLACEHOLDER_FOR_NARVIK_BANK_COLLECTION_ID?format=compact" style="top:0; left:0; bottom:0; right:0; width:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999999; min-width: 930px; min-height: 1250px;"></iframe>
-                                            </div>
-                                        </div>
-                                    `;
                             case 'logoer':
                                 return `
                                     <div class="bg-white p-8 rounded-xl shadow-lg">
                                         <h2 class="text-3xl font-bold text-gray-800 mb-6">Logoer (Grong)</h2>
-                                        <p class="text-gray-700 leading-relaxed mb-8">Her kan du laste ned de offisielle logoene og se all tilhørende informasjon.</p>
-                                        <p>Henter data...</p>
-                                    </div>
-                                `;
-                            case 'logoer_narvik':
-                                return `
-                                    <div class="bg-white p-8 rounded-xl shadow-lg">
-                                        <h2 class="text-3xl font-bold text-gray-800 mb-6">Logoer (Narvik)</h2>
                                         <p class="text-gray-700 leading-relaxed mb-8">Her kan du laste ned de offisielle logoene og se all tilhørende informasjon.</p>
                                         <p>Henter data...</p>
                                     </div>
@@ -1289,11 +1242,6 @@
                     renderLogos('fc2f1082874011f0b4d3ce3c9ebf2406', 'Logoer (Grong)');
                 }
                 
-                // If the section is 'logoer_narvik', fetch and render the content
-                if (section === 'logoer_narvik') {
-                    renderLogos('PLACEHOLDER_FOR_NARVIK_LOGO_FOLDER_ID', 'Logoer (Narvik)');
-                }
-
                 // If the section is 'eika_merkevare', set up the slogan generator
                 if (section === 'eika_merkevare') {
                     setupSloganGenerator();
@@ -1328,25 +1276,27 @@
                     clearSearchBtn.classList.add('hidden');
                 }
 
-                // Først, skjul alle menyelementer og lukk alle detaljer
-                document.querySelectorAll('nav li').forEach(li => li.classList.add('hidden'));
-                document.querySelectorAll('nav details').forEach(details => details.open = false);
-
                 if (searchTerm.length > 0) {
-                    allNavLinks.forEach(link => {
+                    // Vis alle menyelementer og utvid alle detaljer for å søke i alt innhold
+                    document.querySelectorAll('nav li').forEach(li => li.classList.add('hidden'));
+                    document.querySelectorAll('nav details').forEach(details => details.open = false);
+
+                    const matchingLinks = Array.from(allNavLinks).filter(link => {
                         const linkText = link.textContent.toLowerCase();
-                        if (linkText.includes(searchTerm)) {
-                            // Vis lenken og alle overliggende elementer
-                            let currentElement = link.closest('li');
-                            while (currentElement) {
-                                currentElement.classList.remove('hidden');
-                                const parentDetails = currentElement.closest('details');
-                                if (parentDetails) {
-                                    parentDetails.open = true;
-                                    currentElement = parentDetails.closest('li');
-                                } else {
-                                    currentElement = null;
-                                }
+                        return linkText.includes(searchTerm);
+                    });
+
+                    // For hvert matchende element, vis det og alle dets foreldre
+                    matchingLinks.forEach(link => {
+                        let currentElement = link.closest('li');
+                        while (currentElement) {
+                            currentElement.classList.remove('hidden');
+                            const parentDetails = currentElement.closest('details');
+                            if (parentDetails) {
+                                parentDetails.open = true;
+                                currentElement = parentDetails.closest('li');
+                            } else {
+                                currentElement = null;
                             }
                         }
                     });
@@ -1372,8 +1322,9 @@
 
                 } else {
                     clearSearchBtn.classList.add('hidden');
-                    // Vis alle meny-elementer når søkefeltet er tomt
+                    // Vis alle meny-elementer og lukk detaljer når søkefeltet er tomt
                     document.querySelectorAll('nav li').forEach(li => li.classList.remove('hidden'));
+                    document.querySelectorAll('nav details').forEach(details => details.open = false);
                 }
             });
             
