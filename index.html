@@ -763,8 +763,8 @@
                                     <div class="p-3 bg-gray-50">
                                         <p class="font-semibold text-gray-800 text-sm">Blue light</p>
                                         <p class="text-xs text-gray-500">#EFF9FD</p>
-                                        <p class="text-xs text-gray-500 font-mono">var(--blue-light)</p>
                                         <p class="text-xs text-gray-500">CMYK: C:8, M:1, Y:0, K:1</p>
+                                        <p class="text-xs text-gray-500 font-mono">var(--blue-light)</p>
                                     </div>
                                 </div>
                                 <div class="rounded-lg shadow-md overflow-hidden">
@@ -1217,14 +1217,19 @@
                 }
             };
 
+            const handleHashChange = () => {
+                const hash = window.location.hash.substring(1); // Fjerner #
+                const section = hash || 'startside';
+                renderContent(section);
+            };
+
             // Set up click listeners for navigation links
             navLinks.forEach(link => {
                 link.addEventListener('click', (event) => {
-                    event.preventDefault();
+                    // event.preventDefault(); // Fjernes for å la hash-endringen skje naturlig
                     const section = event.target.getAttribute('data-section');
-                    if (section) {
-                        renderContent(section);
-                    }
+                    // Direkte oppdatering av hash vil trigge onhashchange-lytteren
+                    window.location.hash = section;
                 });
             });
 
@@ -1296,8 +1301,8 @@
             });
 
             // Set the default section to display on page load
-            const initialSection = 'startside';
-            renderContent(initialSection);
+            window.addEventListener('hashchange', handleHashChange);
+            handleHashChange(); // Run once on page load
         });
     </script>
 
