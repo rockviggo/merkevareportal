@@ -203,7 +203,7 @@
             const downloadBtn = document.getElementById('downloadBtn');
 
             // Håndtering av CMP Asset Picker-modal
-            const openLibraryBtn = document.getElementById('openAssetPickerBtn');
+            
             const urlModal = document.getElementById('urlModal');
             const closeUrlModalBtn = urlModal.querySelector('.close-button');
             const imageUrlDisplay = document.getElementById('image-url-display');
@@ -242,9 +242,13 @@
                 );
             };
 
-            if (openLibraryBtn) {
-                openLibraryBtn.addEventListener('click', openLibrary);
-            }
+            const setupGrongPageButtons = () => {
+                const openAssetPickerBtn = document.getElementById('openAssetPickerBtn');
+                if (openAssetPickerBtn) {
+                    openAssetPickerBtn.addEventListener('click', openLibrary);
+                }
+            };
+
 
             closeUrlModalBtn.addEventListener('click', () => {
                 urlModal.classList.add('hidden');
@@ -1349,6 +1353,11 @@
                 // If the section is 'eika_merkevare', set up the slogan generator
                 if (section === 'eika_merkevare') {
                     setupSloganGenerator();
+                }
+
+                // If the section is 'grong_sparebank', set up the buttons
+                if (section === 'grong_sparebank') {
+                    setupGrongPageButtons();
                 }
             };
 
