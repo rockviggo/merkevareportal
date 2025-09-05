@@ -164,6 +164,9 @@
                     <ul class="space-y-1 text-sm">
                         <!-- Datafeltene vil bli lagt inn her -->
                     </ul>
+                    <a id="downloadBtn" href="#" download class="mt-4 block w-full py-2 px-4 text-center rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition duration-200">
+                        Last ned bilde
+                    </a>
                 </div>
             </div>
         </div>
@@ -181,6 +184,7 @@
             const closeModalBtn = document.getElementById('closeModalBtn');
             const modalImage = document.getElementById('modalImage');
             const modalDetails = document.getElementById('modalDetails');
+            const downloadBtn = document.getElementById('downloadBtn');
             
             // Funksjon for å hente data fra GraphQL
             const fetchLogos = async (folderId) => {
@@ -242,6 +246,9 @@
             const openModal = (logo) => {
                 modalImage.src = logo.Url;
                 modalImage.alt = logo.Title || 'Bilde';
+                downloadBtn.href = logo.Url;
+                downloadBtn.download = logo.Title || 'download';
+
 
                 // Formatter detaljer til HTML
                 let detailsHtml = `
@@ -1209,8 +1216,11 @@
                                                 Banken understreker sin sterke lokale forankring og posisjonerer seg som en del av lokalsamfunnet. De kombinerer digitale løsninger med personlig rådgivning, og lover at de er lett tilgjengelige for kundene. Grong Sparebank fremstiller seg ikke som en fjern institusjon, men som en pålitelig partner som er der for å hjelpe kundene å navigere i sin økonomi. Deres overordnede budskap er at de er en støttespiller, med en holdning som sier: "du kan få til dette," og "vi er her for å hjelpe deg."
                                             </p>
                                         </div>
-                                        <div class="mt-8 mb-8">
-                                            <a href="https://cmp.optimizely.com/cloud/library?parentFolderGuid=fc2f1082874011f0b4d3ce3c9ebf2406" target="_blank" class="block w-full py-2 px-4 text-center rounded-lg bg-[#90D000] text-black font-normal hover:bg-[#80B800] transition duration-200 shadow-md">
+                                        <div class="bg-white p-6 rounded-xl shadow-lg mt-8 mb-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                                            <a href="https://rockviggo.github.io/merkevareportal/asset-picker.html" target="_blank" class="block w-full sm:w-auto flex-1 py-2 px-4 text-center rounded-lg bg-[#D3EC99] text-black font-normal hover:bg-[#c3d88e] transition duration-200 shadow-md">
+                                                Velg og bruk bilde
+                                            </a>
+                                            <a href="https://cmp.optimizely.com/cloud/library?parentFolderGuid=fc2f1082874011f0b4d3ce3c9ebf2406" target="_blank" class="block w-full sm:w-auto flex-1 py-2 px-4 text-center rounded-lg bg-[#C0E8F6] text-black font-normal hover:bg-[#a9d9e6] transition duration-200 shadow-md">
                                                 Rediger og last opp bilder
                                             </a>
                                         </div>
