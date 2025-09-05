@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimizely CMP Asset Picker Demo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            box-sizing: border-box;
+        }
+        h1 {
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #333;
+        }
+        .url-box {
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            padding: 15px;
+            border-radius: 6px;
+            word-wrap: break-word;
+            font-family: monospace;
+            font-size: 14px;
+            text-align: left;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Optimizely CMP Asset Picker</h1>
+    <p>Klikk på knappen for å velge et bilde fra Optimizelys CMP.</p>
+    <button id="openLibrary">Åpne Bibliotek</button>
+</div>
+
+<div id="urlModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Valgt bilde</h2>
+        <p>URL-en til det valgte bildet er:</p>
+        <div id="image-url-display" class="url-box"></div>
+    </div>
+</div>
+
+<script>
+    // Referanser til HTML-elementene
+    const openLibraryButton = document.getElementById('openLibrary');
+    const urlModal = document.getElementById('urlModal');
+    const closeModalButton = document.querySelector('.close-button');
+    const imageUrlDisplay = document.getElementById('image-url-display');
+
+    // Funksjon for å håndtere meldingen fra CMP-vinduet
+    const handleMessage = (event) => {
+        // Sikkerhetskontroll: Sjekk at meldingen kommer fra riktig domene
+        if (event.origin !== 'https://cmp.optimizely.com') {
+            return;
+        }
+
+        // Event.data inneholder JSON-objektet med de valgte ressursene
+        const assets = event.data;
+
+        // Sjekk om det er valgt minst ett bilde
+        if (assets && assets.length > 0) {
+            // Henter URL-en til det første bildet
+            const imageUrl = assets[0].url; 
+
+            // Oppdaterer modalen med URL-en
+            imageUrlDisplay.textContent = imageUrl;
+            
+            // Viser modalen
+            urlModal.style.display = 'flex';
+        }
+    };
+
+    // Legger til hendelseslytter for 'message'-hendelsen
+    window.addEventListener('message', handleMessage, false);
+
+    // Funksjon for å åpne CMP asset picker i et nytt vindu
+    const openLibrary = () => {
+        // Definerer alternativer for asset pickeren (f.eks. kun bilder)
+        const options = {
+            assetTypes: ['image'],
+            multiSelect: false
+        };
+
+        // Koder alternativene til en Base64-streng for URL-en
+        const encodedOptions = window.btoa(JSON.stringify(options));
+
+        // Åpner et nytt popup-vindu med CMP asset picker
+        window.open(
+            `https://cmp.optimizely.com/cloud/library-picker?pickerOptions=${encodedOptions}`, 
+            'LibraryPicker', 
+            'width=1200,height=800'
+        );
+    };
+
+    // Legger til klikk-hendelseslytter på knappen
+    openLibraryButton.addEventListener('click', openLibrary);
+
+    // Lukker modalen når man klikker på lukk-knappen
+    closeModalButton.addEventListener('click', () => {
+        urlModal.style.display = 'none';
+    });
+
+    // Lukker modalen hvis man klikker utenfor innholdet
+    window.addEventListener('click', (event) => {
+        if (event.target === urlModal) {
+            urlModal.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
