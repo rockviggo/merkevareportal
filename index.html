@@ -171,6 +171,22 @@
             </div>
         </div>
     </div>
+    
+    <!-- Modal for å vise den valgte URL-en -->
+    <div id="urlModal" class="modal-overlay hidden">
+        <div class="modal-content text-center">
+            <button class="close-button absolute top-4 right-4 text-gray-600 hover:text-gray-900 transition-colors text-2xl font-bold">
+                &times;
+            </button>
+            <h3 class="text-xl font-bold mb-4">Bildets URL</h3>
+            <div class="bg-gray-100 p-4 rounded-lg break-all">
+                <p id="image-url-display" class="font-mono text-sm text-gray-700"></p>
+            </div>
+            <button id="copyUrlBtn" class="mt-4 w-full py-2 px-4 text-center rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition duration-200">
+                Kopier URL
+            </button>
+        </div>
+    </div>
 
     <script>
         // JavaScript for handling navigation and content switching
@@ -185,7 +201,74 @@
             const modalImage = document.getElementById('modalImage');
             const modalDetails = document.getElementById('modalDetails');
             const downloadBtn = document.getElementById('downloadBtn');
-            
+
+            // Håndtering av CMP Asset Picker-modal
+            const openLibraryBtn = document.getElementById('openAssetPickerBtn');
+            const urlModal = document.getElementById('urlModal');
+            const closeUrlModalBtn = urlModal.querySelector('.close-button');
+            const imageUrlDisplay = document.getElementById('image-url-display');
+            const copyUrlBtn = document.getElementById('copyUrlBtn');
+
+            // Funksjon for å håndtere melding fra CMP
+            const handleMessage = (event) => {
+                if (event.origin !== 'https://cmp.optimizely.com') {
+                    return;
+                }
+
+                const assets = event.data;
+
+                if (assets && assets.length > 0) {
+                    const imageUrl = assets[0].url;
+                    imageUrlDisplay.textContent = imageUrl;
+                    urlModal.classList.remove('hidden');
+                }
+            };
+
+            window.addEventListener('message', handleMessage, false);
+
+            // Funksjon for å åpne CMP asset picker
+            const openLibrary = () => {
+                const options = {
+                    assetTypes: ['image'],
+                    multiSelect: false
+                };
+
+                const encodedOptions = btoa(JSON.stringify(options));
+
+                window.open(
+                    `https://cmp.optimizely.com/cloud/library-picker?pickerOptions=${encodedOptions}`,
+                    'LibraryPicker',
+                    'width=1200,height=800'
+                );
+            };
+
+            if (openLibraryBtn) {
+                openLibraryBtn.addEventListener('click', openLibrary);
+            }
+
+            closeUrlModalBtn.addEventListener('click', () => {
+                urlModal.classList.add('hidden');
+            });
+
+            urlModal.addEventListener('click', (event) => {
+                if (event.target === urlModal) {
+                    urlModal.classList.add('hidden');
+                }
+            });
+
+            copyUrlBtn.addEventListener('click', () => {
+                const url = imageUrlDisplay.textContent;
+                navigator.clipboard.writeText(url).then(() => {
+                    copyUrlBtn.textContent = 'Kopiert!';
+                    setTimeout(() => {
+                        copyUrlBtn.textContent = 'Kopier URL';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Kopiering feilet:', err);
+                });
+            });
+
+
             // Funksjon for å hente data fra GraphQL
             const fetchLogos = async (folderId) => {
                 const query = `
@@ -1216,11 +1299,11 @@
                                                 Banken understreker sin sterke lokale forankring og posisjonerer seg som en del av lokalsamfunnet. De kombinerer digitale løsninger med personlig rådgivning, og lover at de er lett tilgjengelige for kundene. Grong Sparebank fremstiller seg ikke som en fjern institusjon, men som en pålitelig partner som er der for å hjelpe kundene å navigere i sin økonomi. Deres overordnede budskap er at de er en støttespiller, med en holdning som sier: "du kan få til dette," og "vi er her for å hjelpe deg."
                                             </p>
                                         </div>
-                                        <div class="bg-white p-6 rounded-xl shadow-lg mt-8 mb-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-                                            <a href="https://rockviggo.github.io/merkevareportal/asset-picker.html" target="_blank" class="block w-full sm:w-auto flex-1 py-2 px-4 text-center rounded-lg bg-[#D3EC99] text-black font-normal hover:bg-[#c3d88e] transition duration-200 shadow-md">
+                                        <div class="bg-white p-6 rounded-xl shadow-lg mt-8 mb-8 flex flex-col gap-3">
+                                            <button id="openAssetPickerBtn" class="block w-full py-2 px-4 text-center rounded-lg bg-[#D3EC99] text-black font-normal hover:bg-[#c3d88e] transition duration-200 shadow-md">
                                                 Velg og bruk bilde
-                                            </a>
-                                            <a href="https://cmp.optimizely.com/cloud/library?parentFolderGuid=fc2f1082874011f0b4d3ce3c9ebf2406" target="_blank" class="block w-full sm:w-auto flex-1 py-2 px-4 text-center rounded-lg bg-[#C0E8F6] text-black font-normal hover:bg-[#a9d9e6] transition duration-200 shadow-md">
+                                            </button>
+                                            <a href="https://cmp.optimizely.com/cloud/library?parentFolderGuid=fc2f1082874011f0b4d3ce3c9ebf2406" target="_blank" class="block w-full py-2 px-4 text-center rounded-lg bg-[#C0E8F6] text-black font-normal hover:bg-[#a9d9e6] transition duration-200 shadow-md">
                                                 Rediger og last opp bilder
                                             </a>
                                         </div>
