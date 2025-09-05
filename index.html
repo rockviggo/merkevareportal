@@ -182,9 +182,14 @@
             <div class="bg-gray-100 p-4 rounded-lg break-all">
                 <p id="image-url-display" class="font-mono text-sm text-gray-700"></p>
             </div>
-            <button id="copyUrlBtn" class="mt-4 w-full py-2 px-4 text-center rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition duration-200">
-                Kopier URL
-            </button>
+            <div class="flex flex-col sm:flex-row gap-2 mt-4">
+                <button id="copyUrlBtn" class="flex-1 py-2 px-4 text-center rounded-lg bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition duration-200">
+                    Kopier URL
+                </button>
+                <a id="downloadSelectedBtn" href="#" download class="flex-1 py-2 px-4 text-center rounded-lg bg-[#90D000] text-black font-medium hover:bg-[#80B800] transition duration-200">
+                    Last ned
+                </a>
+            </div>
         </div>
     </div>
 
@@ -208,6 +213,7 @@
             const closeUrlModalBtn = urlModal.querySelector('.close-button');
             const imageUrlDisplay = document.getElementById('image-url-display');
             const copyUrlBtn = document.getElementById('copyUrlBtn');
+            const downloadSelectedBtn = document.getElementById('downloadSelectedBtn');
 
             // Funksjon for å håndtere melding fra CMP
             const handleMessage = (event) => {
@@ -220,6 +226,8 @@
                 if (assets && assets.length > 0) {
                     const imageUrl = assets[0].url;
                     imageUrlDisplay.textContent = imageUrl;
+                    downloadSelectedBtn.href = imageUrl;
+                    downloadSelectedBtn.download = imageUrl.split('/').pop();
                     urlModal.classList.remove('hidden');
                 }
             };
