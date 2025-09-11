@@ -1,0 +1,150 @@
+1
+00:00:08,115 --> 00:00:12,195
+A lot of companies now,
+they are interested in data analytics.
+
+2
+00:00:12,195 --> 00:00:15,075
+And they have data scientists,
+and they've invested a lot.
+
+3
+00:00:15,075 --> 00:00:17,330
+And That's a really
+important field,
+
+4
+00:00:17,330 --> 00:00:21,730
+but there was only one
+problem with it. And that is
+
+5
+00:00:21,730 --> 00:00:23,945
+often in data analytics,
+
+6
+00:00:23,945 --> 00:00:27,545
+we have to actually
+rely on existing data.
+
+7
+00:00:27,545 --> 00:00:30,505
+Now, here's sort of a set
+of issues that we typically run
+
+8
+00:00:30,505 --> 00:00:33,440
+into, and that's why we
+need experimentation.
+
+9
+00:00:33,440 --> 00:00:36,480
+First of all, when it
+comes to innovation,
+
+10
+00:00:36,480 --> 00:00:42,045
+we often don't have the data
+because if the data was already there,
+
+11
+00:00:42,045 --> 00:00:44,365
+it wouldn't be very
+innovative because someone has already
+
+12
+00:00:44,365 --> 00:00:47,325
+done it before, so it's
+not innovative. So by definition,
+
+13
+00:00:47,325 --> 00:00:50,685
+innovation means that we
+usually don't have the data to
+
+14
+00:00:50,685 --> 00:00:55,870
+analyze to begin with. Second
+of all, context matters.
+
+15
+00:00:55,870 --> 00:01:00,295
+Just because something works
+in one sort of area, doesn't
+
+16
+00:01:00,295 --> 00:01:03,495
+mean that it works in another
+area. And then finally,
+
+17
+00:01:03,495 --> 00:01:07,910
+when we do data analytics,
+we usually get correlations.
+
+18
+00:01:07,910 --> 00:01:11,430
+You know, that is
+variables correlate with each other.
+
+19
+00:01:11,430 --> 00:01:12,870
+But correlations
+
+20
+00:01:12,870 --> 00:01:16,595
+is not the same as causation.
+
+21
+00:01:16,595 --> 00:01:19,475
+The most fundamental question
+that we need to know as
+
+22
+00:01:19,475 --> 00:01:22,355
+managers is whether an
+action that we want to take,
+
+23
+00:01:22,355 --> 00:01:26,900
+a management action or
+decision actually causes some outcome
+
+24
+00:01:26,900 --> 00:01:31,140
+that we sort of aspire
+to. The only surefire way
+
+25
+00:01:31,140 --> 00:01:35,205
+of actually addressing
+causality is to run rigorous
+
+26
+00:01:35,205 --> 00:01:37,125
+controlled experiments.
+
+27
+00:01:37,125 --> 00:01:40,885
+So if you have a data
+analytics program and you're just relying
+
+28
+00:01:40,885 --> 00:01:44,270
+on existing data, you're
+you're you're not there yet.
+
+29
+00:01:44,270 --> 00:01:48,745
+What you have to do is
+you actually have to add experimentation
+
+30
+00:01:48,745 --> 00:01:52,985
+to your toolbox as well,
+and the two will actually augment
+
+31
+00:01:52,985 --> 00:01:55,959
+each other. Yep. So that's
+what it's all about.
