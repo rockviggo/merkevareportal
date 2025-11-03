@@ -57,6 +57,29 @@
         }
     </style>
 </head>
+
+    ///Dynamics Customer Insights///
+     <script>
+                (function (a, t, i) { var e = "MSCI"; var s = "Analytics"; var o = e + "queue"; a[o] = a[o] || []; var r = a[e] || function (n) { var t = {}; t[s] = {}; function e(e) { while (e.length) { var r = e.pop(); t[s][r] = function (e) { return function () { a[o].push([e, n, arguments]) } }(r) } } var r = "track"; var i = "set"; e([r + "Event", r + "View", r + "Action", i + "Config", i + "Property", i + "User", "initialize", "teardown"]); return t }(i.name); var n = i.name; if (!a[e]) { a[n] = r[s]; a[o].push(["new", n]); setTimeout(function () { var e = "script"; var r = t.createElement(e); r.async = 1; r.src = i.src; var n = t.getElementsByTagName(e)[0]; n.parentNode.insertBefore(r, n) }, 1) } else { a[n] = new r[s] } if (i.user) { a[n].setUser(i.user) } if (i.props) { for (var c in i.props) { a[n].setProperty(c, i.props[c]) } } a[n].initialize(i.cfg) })(window, document, {
+
+                    src: "https://cxppeur1rdrect01sa02cdn-endpoint.azureedge.net/webtracking/WebTracking/WebTracking.bundle.js",
+                    name: "MSCI",
+                    cfg: {
+
+                        ingestionKey: "db05904c568544b3b108b74041de41a1-f2f000a1-6e57-47f9-b8a5-3632e0f466d4-7426",
+                        endpointUrl: "https://mobile.events.data.microsoft.com/OneCollector/1.0/",
+                        autoCapture: {
+                            view: true,
+                            click: true
+                        },
+                        orgInfo: {
+                            orgId: "66676547-abb5-f011-89f5-000d3adc9e44",
+                            orgTenantId: "63343e54-f99e-489c-b148-3fb63c78629d",
+                            orgGeo: "EUR"
+                        }
+                    }
+                });
+        </script>
 <body class="flex flex-col min-h-screen">
 
     <div class="flex flex-1">
@@ -1462,4 +1485,5 @@
 
 </body>
 </html>
+
 
